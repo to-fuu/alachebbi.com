@@ -1,0 +1,142 @@
+import * as datoCmsApi from '@/cms/dato';
+import Project from "@/cms/types/Project";
+import FadeIn from "@/components/Fadein";
+import Layout from "@/components/layout/Layout";
+import Seo from "@/components/Seo";
+import Tooltip from '@/components/tooltip';
+import { ProjectWindow } from "@/components/windows/projectwindow";
+import { GetStaticProps } from "next";
+import { HiChevronDoubleRight } from "react-icons/hi";
+import { ImGithub } from "react-icons/im";
+import { SiAndroidstudio, SiDatocms, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiWindows, SiWordpress } from "react-icons/si";
+
+interface props {
+    projects: Project[]
+}
+
+export default function Projects({ projects }: props) {
+    return <Layout headerDark hideNav>
+        <Seo templateTitle="Projects 🏷️" />
+
+        <section
+            className='layout relative mb-20 flex max-w-screen-lg scroll-mt-20 flex-col items-center pt-40 pb-12 text-center'
+        >
+            <FadeIn bounce={0} duration={0.5} distance={40} >
+                <h1 className='text-slate-600'>
+                    Projects
+                </h1>
+            </FadeIn>
+
+        </section>
+
+
+
+
+        {projects.map(({ title, description, id, icon, liveSite, repo, image, colorBottomRight, colorTopLeft, accentColor, techs }) => (
+            <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className="mb-10">
+                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0  before:bg-[url(/images/mesh-1.png)] before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorBottomRight?.hex})` }}>
+                    <div className='absolute inset-0 bg-[url(/images/noise.png)] bg-repeat' />
+                    <div className='layout relative max-w-screen-lg'>
+                        <h2 className='text-slate-200'>
+                            <div className=''>{title}</div>
+                        </h2>
+                        <p className="text-xl mt-8 max-w-md text-white/80">{description}</p>
+                        <div className='mt-8 flex w-full items-center gap-4 text-3xl text-gray-200'>
+                            {mapTechs(techs)}
+                        </div>
+                        <div className='mt-12 flex items-center '>
+                            <a href={liveSite} target={'_blank'} rel='noreferrer' className='group mr-4 relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
+                                Live Website
+                                <HiChevronDoubleRight />
+                            </a>
+                            <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
+                                View Code
+                                <ImGithub />
+                            </a>
+                        </div>
+                    </div>
+                    <div className='layout max-w-screen-lg mt-12'>
+                        <ProjectWindow
+                            hideButtons
+                            className={`w-full rounded-b-none`}
+                            title={title}
+                            icon={<img src={icon?.url} alt={title + '_icon'} className="w-5 h-5" />}
+                            url='coffeecupindustries.com'
+                            img={image?.url}
+                        />
+                    </div>
+                </section>
+            </FadeIn>
+        ))}
+
+        <FadeIn bounce={0} duration={0.5} distance={20} once={false} startScale={1} >
+            <div className='text-center mx-auto text-3xl font-bold mt-32 text-gray-700'>And more coming soon...</div>
+        </FadeIn>
+
+    </Layout>
+}
+
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    const projects = await datoCmsApi.getAllProjects()
+    return {
+        props: {
+            projects
+        },
+        revalidate: 10, // In seconds
+    }
+}
+
+const mapTechs = (techs: string[]) => {
+    return techs.map((tech) => {
+        switch (tech) {
+            case "next": return <Tooltip content='Next.js'>
+                <SiNextdotjs title='Next.js' />
+            </Tooltip>
+            case "tailwind": return <Tooltip content="TailwindCSS">
+                <SiTailwindcss className='' title='Tailwindcss' />
+            </Tooltip>
+            case "mysql": return <Tooltip content="MySQL">
+                <SiMysql className='text-4xl' title='MySQL' />
+            </Tooltip>
+            case "paypal": return <Tooltip content="Paypal">
+                <SiPaypal title='Paypal' />
+            </Tooltip>
+            case "dato": return <Tooltip content="Dato CMS">
+                <SiDatocms title='Dato CMS' />
+            </Tooltip>
+            case "node": return <Tooltip content="Node.js">
+                <SiNodedotjs title='Node.js' />
+            </Tooltip>
+            case "graphql": return <Tooltip content="GraphQL">
+                <SiGraphql title='Graphql' />
+            </Tooltip>
+            case "wordpress": return <Tooltip content="Wordpress">
+                <SiWordpress title='Wordpress' />
+            </Tooltip>
+            case "flutter": return <Tooltip content="Flutter">
+                <SiFlutter title='Flutter' />
+            </Tooltip>
+            case "winui": return <Tooltip content="WinUI">
+                <SiWindows title='WinUI' />
+            </Tooltip>
+            case "uwp": return <Tooltip content="Universal Windows Platform">
+                <SiWindows title='UWP' />
+            </Tooltip>
+            case "winforms": return <Tooltip content="Windows Forms">
+                <SiWindows title='Windows Forms' />
+            </Tooltip>
+            case "android studio": return <Tooltip content="Android Studio">
+                <SiAndroidstudio title='Android Studio' />
+            </Tooltip>
+            case "react native": return <Tooltip content="React Native">
+                <SiReact title='React Native' />
+            </Tooltip>
+            case "react": return <Tooltip content="React">
+                <SiReact title='React' />
+            </Tooltip>
+        }
+    })
+}
+
+// techs: "next","tailwind","strapi","graphql","mysql","dato","paypal","wordpress","flutter","windows","android studio","rnative","node"
