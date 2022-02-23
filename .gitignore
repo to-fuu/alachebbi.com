@@ -18,6 +18,12 @@
 # misc
 .DS_Store
 *.pem
+.prettierignore
+.prettier.js
+commitlint.config.js
+jest.config.js
+jest.setup.js
+vercel.json
 
 # debug
 npm-debug.log*

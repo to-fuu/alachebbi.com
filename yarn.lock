@@ -1474,11 +1474,6 @@
   dependencies:
     chalk "^4.0.0"
 
-"@corex/deepmerge@^2.6.148":
-  version "2.6.148"
-  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.6.148.tgz#8fa825d53ffd1cbcafce1b6a830eefd3dcc09dd5"
-  integrity sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==
-
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -7195,14 +7190,6 @@ next-remove-imports@^1.0.6:
     "@babel/core" "^7.14.3"
     babel-loader "^8.2.2"
     babel-plugin-transform-remove-imports "^1.5.4"
-
-next-sitemap@^1.9.12:
-  version "1.9.12"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.9.12.tgz#288c2dfc907039892e21eb1b0c7a94d288f323d9"
-  integrity sha512-kHXf4ZNAGLJyK16HbjzE5X9JlKwXtxW+9J4dh3oT7LSbU/+3bN+VqWjNw/776Otbanf7EJsvl51oQ78qQW5XBQ==
-  dependencies:
-    "@corex/deepmerge" "^2.6.148"
-    minimist "^1.2.5"
 
 next@^12.0.10:
   version "12.0.10"
