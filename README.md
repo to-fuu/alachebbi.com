@@ -7,4 +7,5 @@
 ### Todo
 
 - [ ] Finish responsive design
+- [ ] Add page transition
 - [ ] Add slides to projects
