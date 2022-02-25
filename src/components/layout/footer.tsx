@@ -7,8 +7,8 @@ import Tooltip from "../tooltip";
 export const Footer = () => (
     <footer id="footer" className="">
         <div className="max-w-screen-2xl  pt-32 pb-12 mx-auto xl:px-8">
-            <div className="max-w-screen-xl mx-auto text-white py-20 xl:rounded-3xl overflow-clip before:rounded-3xl text-center  bg-gradient-to-br from-blue-600 to-green-400 before:bg-[url(/images/mesh-1.png)] before:absolute before:inset-0 before:bg-cover before:mix-blend-overlay before:opacity-100  relative before:animate-hue-rotate">
-                <div className='absolute inset-0 bg-[url(/images/noise.png)] bg-repeat' />
+            <div className="max-w-screen-xl mx-auto text-white py-20 xl:rounded-3xl overflow-clip before:rounded-3xl text-center  bg-gradient-to-br from-blue-600 to-green-400 before:bg-[url(/images/mesh-1.webp)] before:absolute before:inset-0 before:bg-cover before:mix-blend-overlay before:opacity-100  relative before:animate-hue-rotate">
+                <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
                 <FadeIn once={false} duration={0.75} className="relative">
                     <p className="text-4xl font-extrabold sm:text-6xl">
                         Let's work together

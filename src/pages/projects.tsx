@@ -6,9 +6,9 @@ import Seo from "@/components/Seo";
 import Tooltip from '@/components/tooltip';
 import { ProjectWindow } from "@/components/windows/projectwindow";
 import { GetStaticProps } from "next";
-import { HiChevronDoubleRight } from "react-icons/hi";
+import { HiChevronDoubleRight, HiOutlineDuplicate } from "react-icons/hi";
 import { ImGithub } from "react-icons/im";
-import { SiAndroidstudio, SiDatocms, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiWindows, SiWordpress } from "react-icons/si";
+import { SiAndroidstudio, SiDatocms, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiWindows, SiWordpress } from "react-icons/si";
 
 interface props {
     projects: Project[]
@@ -29,13 +29,10 @@ export default function Projects({ projects }: props) {
 
         </section>
 
-
-
-
         {projects.map(({ title, description, id, icon, liveSite, repo, image, colorBottomRight, colorTopLeft, accentColor, techs }) => (
             <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className="mb-10">
-                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0  before:bg-[url(/images/mesh-1.png)] before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorBottomRight?.hex})` }}>
-                    <div className='absolute inset-0 bg-[url(/images/noise.png)] bg-repeat' />
+                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0  before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorBottomRight?.hex})` }}>
+                    <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
                     <div className='layout relative max-w-screen-lg'>
                         <h2 className='text-slate-200'>
                             <div className=''>{title}</div>
@@ -94,46 +91,49 @@ const mapTechs = (techs: string[]) => {
                 <SiNextdotjs title='Next.js' />
             </Tooltip>
             case "tailwind": return <Tooltip content="TailwindCSS">
-                <SiTailwindcss className='' title='Tailwindcss' />
+                <SiTailwindcss />
             </Tooltip>
             case "mysql": return <Tooltip content="MySQL">
-                <SiMysql className='text-4xl' title='MySQL' />
+                <SiMysql className='text-4xl' />
             </Tooltip>
             case "paypal": return <Tooltip content="Paypal">
-                <SiPaypal title='Paypal' />
+                <SiPaypal />
             </Tooltip>
             case "dato": return <Tooltip content="Dato CMS">
-                <SiDatocms title='Dato CMS' />
+                <SiDatocms />
             </Tooltip>
             case "node": return <Tooltip content="Node.js">
-                <SiNodedotjs title='Node.js' />
+                <SiNodedotjs />
             </Tooltip>
             case "graphql": return <Tooltip content="GraphQL">
-                <SiGraphql title='Graphql' />
+                <SiGraphql />
             </Tooltip>
             case "wordpress": return <Tooltip content="Wordpress">
-                <SiWordpress title='Wordpress' />
+                <SiWordpress />
             </Tooltip>
             case "flutter": return <Tooltip content="Flutter">
-                <SiFlutter title='Flutter' />
+                <SiFlutter />
             </Tooltip>
             case "winui": return <Tooltip content="WinUI">
-                <SiWindows title='WinUI' />
+                <SiWindows />
             </Tooltip>
             case "uwp": return <Tooltip content="Universal Windows Platform">
-                <SiWindows title='UWP' />
+                <SiWindows />
             </Tooltip>
             case "winforms": return <Tooltip content="Windows Forms">
-                <SiWindows title='Windows Forms' />
+                <SiWindows />
             </Tooltip>
             case "android studio": return <Tooltip content="Android Studio">
-                <SiAndroidstudio title='Android Studio' />
+                <SiAndroidstudio />
             </Tooltip>
             case "react native": return <Tooltip content="React Native">
-                <SiReact title='React Native' />
+                <SiReact />
             </Tooltip>
             case "react": return <Tooltip content="React">
-                <SiReact title='React' />
+                <SiReact />
+            </Tooltip>
+            case "typescript": return <Tooltip content="Typescript">
+                <SiTypescript />
             </Tooltip>
         }
     })

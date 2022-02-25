@@ -1,5 +1,4 @@
-import useScroll from '@/hooks/useScroll';
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode } from 'react';
 import {
   HiViewList
 } from 'react-icons/hi';
@@ -30,8 +29,6 @@ export const ProjectWindow = React.forwardRef(
     }: HeaderWindowPops,
     ref
   ) => {
-    const scroll = useScroll();
-    const imageRef = useRef<HTMLImageElement>(null);
     return (
       <div
         onClick={onClick}
@@ -60,7 +57,6 @@ export const ProjectWindow = React.forwardRef(
 
         <div className='max-h-[300px] lg:max-h-[560px] overflow-y-scroll '>
           <img
-            ref={imageRef}
             className={` h-fit w-full transition-none`}
             alt={title}
             src={img}
