@@ -1,3 +1,5 @@
+import { Color, Image } from './common';
+
 type Project = {
   description: string;
   liveSite: string;
@@ -10,14 +12,6 @@ type Project = {
   colorTopLeft: Color;
   colorBottomRight: Color;
   techs: string[];
-};
-
-type Color = {
-  hex: string;
-};
-
-type Image = {
-  url: string;
 };
 
 export default Project;

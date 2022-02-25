@@ -41,6 +41,8 @@ import {
 } from 'react-icons/si';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper'
+import Testimonial from '@/cms/types/Testimonial';
+import Image from 'next/image';
 SwiperCore.use([Navigation])
 /**
  * SVGR Support
@@ -56,8 +58,9 @@ SwiperCore.use([Navigation])
 // to customize the default configuration.
 interface props {
   projects: Project[]
+  testimonials: Testimonial[]
 }
-export default function HomePage({ projects }: props) {
+export default function HomePage({ projects, testimonials }: props) {
   const s1Ref = React.useRef<HTMLDivElement>(null);
   const discRef = React.useRef<HTMLButtonElement>(null);
   const cvRef = React.useRef<HTMLAnchorElement>(null);
@@ -76,8 +79,8 @@ export default function HomePage({ projects }: props) {
       {/* <Seo templateTitle='Home' /> */}
       <Seo />
       <main className='bg-white max-w-[100vw] overflow-x-clip '>
-        <section className='relative min-h-[90vh] overflow-y-clip bg-gradient-to-br from-blue-600 to-green-400 text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.png)] before:bg-cover before:opacity-100 before:mix-blend-overlay '>
-          <div className='absolute inset-0 bg-[url(/images/noise.png)] bg-repeat ' />
+        <section className='relative min-h-[90vh] overflow-y-clip bg-gradient-to-br from-blue-600 to-green-400 text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay '>
+          <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat ' />
           <div className='layout relative  max-w-screen-xl flex w-full flex-col pt-40 text-left px-10 xl:px-0'>
             <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
               <h1 className='group mt-4 flex flex-col leading-[1.1]  '>
@@ -389,8 +392,8 @@ export default function HomePage({ projects }: props) {
 
         <FadeIn bounce={0} duration={0.75} distance={40} once={false}>
           <section className='pb-20 pt-10 scroll-mt-40' id='projects'>
-            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorBottomRight?.hex})` }} className='transition-all duration-300 relative mx-auto max-w-screen-xl overflow-clip xl:rounded-3xl pt-20 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.png)] before:bg-cover before:opacity-100 before:mix-blend-overlay'>
-              <div className='absolute inset-0 bg-[url(/images/noise.png)] bg-repeat' />
+            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorBottomRight?.hex})` }} className='transition-all duration-300 relative mx-auto max-w-screen-xl overflow-clip xl:rounded-3xl pt-20 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay'>
+              <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
               <div className='layout relative max-w-screen-lg'>
                 <h2 className='text-slate-200'>
                   <div className=''>Latest projects</div>
@@ -473,79 +476,29 @@ export default function HomePage({ projects }: props) {
                   className=' w-full h-[320px]'
                   onSlideChange={(swiper) => setSelectedSlide(swiper.activeIndex)}
                 >
-                  <SwiperSlide
+
+                  {testimonials.map(({ initials, name, review, thumb, title }) => (<SwiperSlide
                     className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab transition duration-300 w-full flex flex-col  font-semibold text-gray-800`}
                   >
                     <p className='text-xl sm:text-3xl leading-snug'>
-                      "Ala did an excellent job! He is super friendly and delivered his work in hours. I can give a 100% recommendation and I will definitely hire him in the future again.
-                      <br />
-                      Also the code looks very clean!"
+                      {review}
                     </p>
                     <div className="flex items-center mt-auto">
-                      <img src="images/daniel.jpg" className='w-12 h-12 mr-4 rounded-full' alt="" />
+                      {thumb ? <Image width={48} height={48} src={thumb.url} className=' mr-4 rounded-full' alt="" />
+                        :
+                        <div className='w-12 h-12 mr-4 rounded-full bg-gray-200 grid place-items-center font-black text-xl text-gray-500' children={'C'} />
+                      }
                       <div className="">
                         <div className="text-lg flex flex-col">
-                          Daniel Kurzeja
+                          {name}
                         </div>
                         <div className="text-sm">
-                          Upwork client - Kurzeja Consulting
-                        </div>
-                      </div>
-                      {/* <button onClick={()=>{
-                        testimonialRef.current.activeIndex = 1
-                      }} className='ml-auto w-12 h-12 mr-4 grid place-items-center rounded-full  text-blue-700  backdrop-blur-sm transition duration-300 hover:bg-blue-50'>
-                        <HiArrowLeft />
-                      </button>
-                      <button className='rounded-full w-12 h-12 grid place-items-center  text-blue-700  backdrop-blur-sm transition duration-300 hover:bg-blue-50'>
-                        <HiArrowRight />
-                      </button> */}
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide
-                    className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab max-w-screen-xl transition duration-300 w-full flex flex-col justify-between font-semibold text-gray-800`}
-                  >
-                    <p className='text-xl sm:text-3xl leading-snug'>
-                      "Ala delivered good work on this TailwindCss project and I enjoyed working with him. His skills were reasonably strong. I enjoyed working with Ala and will likely have additional jobs for him in the future."
-                    </p>
-                    <div className="flex items-center mt-auto">
-                      <img src="images/ion.jpg" className='w-12 h-12 mr-4 rounded-full' alt="" />
-                      <div className="">
-                        <div className="text-lg flex flex-col">
-                          Ion Ciubanu
-                        </div>
-                        <div className="text-sm">
-                          Upwork client - IT Nolimit
+                          {title}
                         </div>
                       </div>
 
                     </div>
-                  </SwiperSlide>
-
-                  <SwiperSlide
-                    className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab max-w-screen-xl transition duration-300 w-full flex flex-col justify-between font-semibold text-gray-800`}
-                  >
-                    <p className='text-xl sm:text-3xl leading-snug'>
-                      "Working with Tofuu (Ala) was a great experience. I gave him my ideas and some pictures and he turned them into a working video game. This game is really important to me and he was both communicative and speedy as he put it together.. Great designer."
-                    </p>
-                    <div className="flex items-center mt-auto">
-                      <div className='w-12 h-12 mr-4 rounded-full bg-gray-200 grid place-items-center font-black text-xl text-gray-500' children={'C'} />
-                      <div className="">
-                        <div className="text-lg flex flex-col">
-                          Cpmking
-                        </div>
-                        <div className="text-sm">
-                          Fiverr Client - USA
-                        </div>
-                      </div>
-                      {/*
-                      <button className='ml-auto w-12 h-12 mr-4 grid place-items-center rounded-full  text-blue-700  backdrop-blur-sm transition duration-300 hover:bg-blue-50'>
-                        <HiArrowLeft />
-                      </button>
-                      <button className='rounded-full w-12 h-12 grid place-items-center  text-blue-700  backdrop-blur-sm transition duration-300 hover:bg-blue-50'>
-                        <HiArrowRight />
-                      </button> */}
-                    </div>
-                  </SwiperSlide>
+                  </SwiperSlide>))}
 
                 </Swiper>
               </div>
@@ -560,10 +513,11 @@ export default function HomePage({ projects }: props) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const projects = await datoCmsApi.getHomeProjects()
+  const testimonials = await datoCmsApi.getAllTestimonials()
 
   return {
     props: {
-      projects
+      projects, testimonials
     }
   }
 }

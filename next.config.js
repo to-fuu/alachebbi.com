@@ -3,7 +3,9 @@ module.exports = {
   eslint: {
     dirs: ['src'],
   },
-
+  images: {
+    domains: ['www.datocms-assets.com']
+  },
   reactStrictMode: true,
 
   // Uncoment to add domain whitelist

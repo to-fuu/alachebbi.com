@@ -111,3 +111,22 @@ export async function getHomeProjects(): Promise<Project[]> {
 
   return data.allProjects;
 }
+
+export async function getAllTestimonials(): Promise<Project[]> {
+  const data = await fetchCmsAPI(`
+   {
+    allTestimonials(orderBy: _createdAt_ASC) {
+      review
+      name
+      title
+      initials
+      thumb {
+        url
+      }
+    }
+  }
+  
+   `);
+
+  return data.allTestimonials;
+}
