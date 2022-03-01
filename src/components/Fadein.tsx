@@ -35,7 +35,7 @@ const FadeIn = ({
         {({ inView, ref }) => (
           <div ref={ref} className='h-full'>
             <motion.div
-              className='h-full'
+              className='h-full will-change-[transform,opacity]'
               transition={{ duration, type, bounce, delay: delay }}
               initial={{ y: distance, scale: startScale, opacity: opacity }}
               animate={{

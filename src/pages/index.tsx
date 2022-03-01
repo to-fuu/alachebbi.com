@@ -37,7 +37,8 @@ import {
   SiStrapi,
   SiTailwindcss,
   SiTypescript,
-  SiUnity
+  SiUnity,
+  SiWordpress
 } from 'react-icons/si';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper'
@@ -266,13 +267,7 @@ export default function HomePage({ projects, testimonials }: props) {
               <Tooltip content="Java">
                 <SiJava className='text-red-600' />
               </Tooltip>
-              <Tooltip content="Kotlin">
-                <SiKotlin className='text-pink-600' />
-              </Tooltip>
 
-              <Tooltip content="Dart">
-                <SiDart className='text-blue-600' />
-              </Tooltip>
 
               <Tooltip content="HTML5">
                 <SiHtml5 className='text-red-700' />
@@ -318,18 +313,20 @@ export default function HomePage({ projects, testimonials }: props) {
                   title='Android Studio'
                 />
               </Tooltip>
-              <Tooltip content="Flutter">
-                <SiFlutter className='text-sky-500' />
-              </Tooltip>
+
               <Tooltip content="Strapi">
                 <SiStrapi className='text-indigo-600' />
               </Tooltip>
               <Tooltip content="Dato CMS">
                 <SiDatocms className='text-orange-600' />
               </Tooltip>
+              <Tooltip content="Wordpress">
+                <SiWordpress className='text-black' />
+              </Tooltip>
               <Tooltip content="Unity3D">
                 <SiUnity className='text-gray-700' />
               </Tooltip>
+
             </div>
           </FadeIn>
 
@@ -405,10 +402,10 @@ export default function HomePage({ projects, testimonials }: props) {
                       <HiChevronDoubleRight />
                     </a>
                   </Link>
-                  <button ref={projectsPrev} className='ml-auto mr-4 rounded-full border-t bg-white/80 p-3 text-blue-700 shadow backdrop-blur-sm transition duration-300 hover:bg-white'>
+                  <button ref={projectsPrev} className='disabled:bg-white/80 disabled:opacity-50 ml-auto mr-4 rounded-full border-t bg-white/80 p-3 text-blue-700 shadow backdrop-blur-sm transition duration-300 hover:bg-white'>
                     <HiArrowLeft />
                   </button>
-                  <button ref={projectsNext} className='rounded-full border-t bg-white/80 p-3 text-blue-700 shadow backdrop-blur-sm transition duration-300 hover:bg-white'>
+                  <button ref={projectsNext} className='disabled:bg-white/80 disabled:opacity-50 rounded-full border-t bg-white/80 p-3 text-blue-700 shadow backdrop-blur-sm transition duration-300 hover:bg-white'>
                     <HiArrowRight />
                   </button>
                 </div>
