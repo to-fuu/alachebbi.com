@@ -311,7 +311,7 @@ export default function HomePage({ projects, testimonials }: props) {
 
         <FadeIn bounce={0} duration={0.75} distance={40} once={false}>
           <section className='pb-20 pt-10 scroll-mt-40' id='projects'>
-            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorBottomRight?.hex})` }} className='transition-all duration-300 relative mx-auto max-w-screen-xl overflow-clip xl:rounded-3xl pt-20 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay'>
+            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorBottomRight?.hex})` }} className='transition-all duration-300 relative mx-auto max-w-screen-xl overflow-clip xl:rounded-3xl pt-20 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100'>
               <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
               <div className='layout relative max-w-screen-lg'>
                 <h2 className='text-slate-200'>
