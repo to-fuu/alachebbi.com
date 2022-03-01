@@ -1,13 +1,16 @@
 import * as datoCmsApi from '@/cms/dato';
 import Project from '@/cms/types/Project';
+import Testimonial from '@/cms/types/Testimonial';
 import { DetailsGroup } from '@/components/DetailsGroup';
 import FadeIn from '@/components/Fadein';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import Tooltip from '@/components/tooltip';
+import { CodeWindow } from '@/components/windows/codewindow';
 import { HeaderWindow } from '@/components/windows/headerwindow';
 import { ProjectWindow } from '@/components/windows/projectwindow';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import {
@@ -21,17 +24,10 @@ import {
   SiAlpinedotjs,
   SiAndroidstudio,
   SiCsharp,
-  SiCss3,
-  SiDart,
-  SiDatocms,
-  SiDotnet,
-  SiFlutter,
-  SiGraphql,
+  SiCss3, SiDatocms, SiGraphql,
   SiHtml5,
   SiJava,
-  SiJavascript,
-  SiKotlin,
-  SiMysql,
+  SiJavascript, SiMysql,
   SiNextdotjs,
   SiReact,
   SiStrapi,
@@ -40,23 +36,11 @@ import {
   SiUnity,
   SiWordpress
 } from 'react-icons/si';
+import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper'
-import Testimonial from '@/cms/types/Testimonial';
-import Image from 'next/image';
 SwiperCore.use([Navigation])
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-// import Vercel from '~/svg/Vercel.svg';
 
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+
 interface props {
   projects: Project[]
   testimonials: Testimonial[]
@@ -66,10 +50,6 @@ export default function HomePage({ projects, testimonials }: props) {
   const discRef = React.useRef<HTMLButtonElement>(null);
   const cvRef = React.useRef<HTMLAnchorElement>(null);
 
-  const frontend = React.useRef<HTMLDivElement>(null);
-  const game = React.useRef<HTMLDivElement>(null);
-  const software = React.useRef<HTMLDivElement>(null);
-  const [selectedSkill, setSelectedSkill] = React.useState(0);
   const [selectedSlide, setSelectedSlide] = React.useState(0);
 
   const projectsPrev = React.useRef<HTMLButtonElement>(null)
@@ -77,76 +57,24 @@ export default function HomePage({ projects, testimonials }: props) {
 
   return (
     <Layout headerDark={false}>
-      {/* <Seo templateTitle='Home' /> */}
       <Seo />
       <main className='bg-white max-w-[100vw] overflow-x-clip '>
-        <section className='relative min-h-[90vh] overflow-y-clip bg-gradient-to-br from-blue-600 to-green-400 text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay '>
+        <section className='relative  overflow-y-clip bg-gradient-to-br from-blue-600 to-green-400 text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay '>
           <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat ' />
-          <div className='layout relative  max-w-screen-xl flex w-full flex-col pt-40 text-left px-10 xl:px-0'>
+          <div className='layout relative  max-w-screen-xl flex w-full flex-col pt-24 sm:pt-40 text-left px-10 xl:px-0'>
             <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
-              <h1 className='group mt-4 flex flex-col leading-[1.1]  '>
-                <div className='mb-2 font-bold opacity-60  transition duration-300 [text-shadow:2px_2px_#00000033]'>
-                  Howdy 🙌
+              <h1 className='group mt-4 flex flex-col leading-[1.1] justify-center items-center '>
+                <div className='mb-2 font-bold opacity-60 scale-90 transition duration-300 [text-shadow:2px_2px_#00000033] text-center'>
+                  Howdy, I&apos;m Ala
                 </div>
-                <div>
-                  I'm Ala, </div>
-                <div
-                  className={`mr-auto !ml-0 flex w-min max-w-screen-xl select-none gap-10 overflow-x-visible !px-0 transition duration-300`}
-                  style={{
-                    transform: `translateX(${selectedSkill === 0
-                      ? 0
-                      : selectedSkill === 1
-                        ? -(frontend.current!.scrollWidth + 40)
-                        : -(
-                          frontend.current!.scrollWidth +
-                          game.current!.scrollWidth +
-                          80
-                        )
-                      }px)`,
-                  }}
-                >
-                  <div
-                    onClick={() => {
-                      setSelectedSkill(0);
-                    }}
-                    ref={frontend}
-                    className={`cursor-pointer whitespace-nowrap transition duration-300 ${selectedSkill === 0
-                      ? 'opacity-100'
-                      : 'opacity-25 hover:opacity-50'
-                      }`}
-                  >
-                    Frontend Developer
-                  </div>
-                  <div
-                    onClick={() => {
-                      setSelectedSkill(1);
-                    }}
-                    ref={game}
-                    className={`cursor-pointer whitespace-nowrap transition duration-300 ${selectedSkill === 1
-                      ? 'opacity-100'
-                      : 'opacity-25 hover:opacity-50'
-                      }`}
-                  >
-                    Game Developer
-                  </div>
-                  <div
-                    onClick={() => {
-                      setSelectedSkill(2);
-                    }}
-                    ref={software}
-                    className={`cursor-pointer whitespace-nowrap transition duration-300 ${selectedSkill === 2
-                      ? 'opacity-100'
-                      : 'opacity-25 hover:opacity-50'
-                      }`}
-                  >
-                    Software Engineer
-                  </div>
+                <div className='text-center'>
+                  Building modern websites and fun game experiences
                 </div>
               </h1>
             </FadeIn>
 
-            <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75} delay={0.25}>
-              <div className='mt-12 flex gap-4'>
+            <FadeIn className='mx-auto' startScale={1} bounce={0.1} type={'spring'} duration={0.75} delay={0.25}>
+              <div className='mt-12 flex gap-4 flex-wrap justify-center'>
                 <button
                   onClick={() => {
                     s1Ref.current!.scrollIntoView({ behavior: 'smooth' });
@@ -167,9 +95,9 @@ export default function HomePage({ projects, testimonials }: props) {
                   href='/cv-alachebbi.pdf'
                   target={'_blank'}
                   ref={cvRef}
-                  className='cursor-newtab relative inline-flex  h-16 select-none items-center gap-4 rounded-2xl bg-white bg-opacity-50 px-7 text-xl font-medium text-slate-700/70 shadow transition duration-300 hover:bg-opacity-100 hover:text-blue-800'
+                  className='whitespace-nowrap cursor-newtab relative inline-flex  h-16 select-none items-center gap-4 rounded-2xl bg-white bg-opacity-50 px-7 text-xl font-medium text-slate-700/70 shadow transition duration-300 hover:bg-opacity-100 hover:text-blue-800'
                 >
-                  Get Resume
+                  Get CV
                   <HiOutlineDocumentText />
                 </a>
               </div>
@@ -178,14 +106,8 @@ export default function HomePage({ projects, testimonials }: props) {
 
           <div className='relative mt-12 flex '>
             <FadeIn className='w-full' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
-              <HeaderWindow
-                className='-mb-32'
-                tab1='Windows 11 insp...'
-                tab1Icon={<img src='https://www.datocms-assets.com/60949/1645555808-fluwind_shadow.svg' className='w-4 h-4' />}
-                tab2='Ala Chebbi Po...'
-                tab2Icon={<img src='https://www.datocms-assets.com/60949/1645556279-favico.svg' className='w-4 h-4' />}
-                url='fluwind.alachebbi.com'
-                img='https://www.datocms-assets.com/60949/1645565861-fluent.jpeg'
+              <CodeWindow
+                className='-mb-32 w-full'
               />
             </FadeIn>
 
@@ -431,13 +353,13 @@ export default function HomePage({ projects, testimonials }: props) {
                   onSwiper={(swiper) => console.log(swiper)}
                 >
 
-                  {projects.map(({ title, id, icon, liveSite, image }, index) => (
+                  {projects.map(({ title, id, icon, liveSite, image, repo }, index) => (
 
                     <SwiperSlide key={`project_${id}`}
                       className={`cursor-grab overflow-visible transition duration-300 w-full `}
                     >
                       <ProjectWindow
-                        isPrivate
+                        repo={repo}
                         className={`w-full rounded-b-none ${selectedSlide !== index ? 'opacity-75 translate-y-4' : '-translate-y-0'}`}
                         title={title}
                         icon={<img src={icon.url} className='w-4 h-4' />}
@@ -460,7 +382,7 @@ export default function HomePage({ projects, testimonials }: props) {
           <div className='layout'>
             <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
               <h2 className='text-slate-600 text-center'>
-                <div className=''>What my clients said</div>
+                <div className=''>My clients said...</div>
               </h2>
             </FadeIn>
 

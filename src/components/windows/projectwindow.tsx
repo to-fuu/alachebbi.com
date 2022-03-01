@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import {
-  HiViewList
-} from 'react-icons/hi';
-import { ImGithub } from 'react-icons/im';
+  FiArrowUpRight
+} from 'react-icons/fi';
+import { ImGithub, ImNewTab } from 'react-icons/im';
 
 type HeaderWindowPops = {
   className?: string;
@@ -10,7 +10,7 @@ type HeaderWindowPops = {
   icon: ReactNode;
   url: string;
   img: string;
-  isPrivate?: boolean;
+  repo?: string;
   hideButtons?: boolean
   onClick?: () => void;
 };
@@ -22,9 +22,9 @@ export const ProjectWindow = React.forwardRef(
       title,
       icon,
       url,
+      repo,
       img,
       onClick,
-      isPrivate = false,
       hideButtons,
     }: HeaderWindowPops,
     ref
@@ -41,12 +41,12 @@ export const ProjectWindow = React.forwardRef(
           </div>
           {!hideButtons && <a href={`${url}`} target='_blank' rel='noreferrer' className='mr-2 hover:shadow-md hover:-translate-y-px duration-150 inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
             Visit
-            <HiViewList />
+            <FiArrowUpRight />
           </a>}
-          {!hideButtons && <button disabled={isPrivate} className='disabled:bg-white disabled:shadow-sm disabled:translate-y-0 hover:shadow-md hover:-translate-y-px duration-150 disabled:opacity-50 mr-auto inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
-            {isPrivate ? 'Private' : 'Code'}
+          {!hideButtons && repo && <a href={repo} target='_blank' rel='noreferrer' className='disabled:bg-white disabled:shadow-sm disabled:translate-y-0 hover:shadow-md hover:-translate-y-px duration-150 disabled:opacity-50 mr-auto inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
             <ImGithub />
-          </button>}
+            Code
+          </a>}
 
           <div className='ml-auto mr-2 h-3 w-3 rounded-full border-t border-t-red-800 bg-red-500'></div>
           <div className=' mr-2 h-3 w-3 rounded-full border-t border-t-yellow-800 bg-yellow-500'></div>

@@ -15,7 +15,7 @@ export default function Header({ headerDark, hideNav }: { headerDark?: boolean, 
   const scroll = useScroll()
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 border-t border-transparent ${scroll > 200 ? 'bg-zinc-900 backdrop-blur-md border-t-slate-400' : ''}`}>
+    <header className={`px-4 sm:px-0 fixed w-full top-0 z-50 transition-all duration-300 border-t border-transparent ${scroll > 200 ? 'bg-zinc-900 backdrop-blur-md border-t-slate-400' : ''}`}>
       <div className={`layout flex  items-center justify-between transition-all duration-500 ${scroll > 200 ? 'h-20' : 'h-24'}`}>
         <Link href={'/'} passHref>
           <a className={`font-bold ${headerDark ? 'text-zinc-700' : 'text-zinc-300'}  ${scroll > 200 ? '!text-zinc-300 ' : ''} duration-300`}>
@@ -27,7 +27,7 @@ export default function Header({ headerDark, hideNav }: { headerDark?: boolean, 
             {!hideNav && <>
               {
                 links.map(({ href, label, topScroll, bottomScroll }) => (
-                  <li key={`${href}${label}`}>
+                  <li className='hidden sm:block' key={`${href}${label}`}>
                     <button onClick={() => {
                       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
                     }} className={`${headerDark ? 'text-zinc-700 hover:text-zinc-800' : 'text-zinc-300 hover:text-zinc-50'}   font-medium py-2 px-4 rounded-lg ${scroll > 200 ? 'hover:bg-zinc-700/50 !text-zinc-300 hover:!text-zinc-50' : `${headerDark ? 'hover:bg-black/20' : 'hover:bg-white/20'} `} duration-300 ${scroll > topScroll && scroll < bottomScroll && 'bg-zinc-700/50'}`}>
@@ -43,12 +43,12 @@ export default function Header({ headerDark, hideNav }: { headerDark?: boolean, 
                 <ImLinkedin />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="https://github.com/to-fuu/alachebbi.com" target={'_blank'} rel='noreferrer' className={`py-3 ml-1 shadow font-medium group items-center gap-4 px-3 inline-flex rounded-lg transition-all relative duration-300  
               ${headerDark ? `${scroll >= 200 ? 'bg-slate-50/90 hover:bg-slate-50   text-blue-700' : 'text-slate-50/90 hover:bg-blue-600/90   bg-blue-600'}` : 'bg-slate-50/90 hover:bg-slate-50   text-blue-700'}`}>
                 <ImGithub />
               </a>
-            </li>
+            </li> */}
           </ul>
 
         </nav>

@@ -46,10 +46,10 @@ export default function Projects({ projects }: props) {
                                 Live Website
                                 <HiChevronDoubleRight />
                             </a>
-                            <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
+                            {repo && <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
                                 View Code
                                 <ImGithub />
-                            </a>
+                            </a>}
                         </div>
                     </div>
                     <div className='layout max-w-screen-lg mt-12'>
