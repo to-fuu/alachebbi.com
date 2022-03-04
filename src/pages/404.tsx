@@ -1,11 +1,9 @@
 import FadeIn from '@/components/Fadein';
 import Layout from '@/components/layout/Layout';
-import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import * as React from 'react';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
-import { RiAlarmWarningFill } from 'react-icons/ri';
 
 
 export default function NotFoundPage() {
