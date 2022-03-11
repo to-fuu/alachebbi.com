@@ -64,8 +64,10 @@ module.exports = {
             filter: 'none',
           },
         },
+
       },
       animation: {
+
         flicker: 'flicker 3s linear infinite',
         'hue-rotate': 'hue-rotate 5s linear infinite',
       },

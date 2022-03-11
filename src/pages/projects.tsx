@@ -15,26 +15,29 @@ interface props {
 }
 
 export default function Projects({ projects }: props) {
-    return <Layout headerDark hideNav>
+    return <Layout hideNav headerDark>
         <Seo templateTitle="Projects 🏷️" />
 
         <section
-            className='layout relative mb-20 flex max-w-screen-lg scroll-mt-20 flex-col items-center pt-40 pb-12 text-center'
+            className='layout relative mb-20 flex max-w-screen-lg scroll-mt-20 flex-col items-center pt-40 pb-12 text-center dark:bg-black'
         >
             <FadeIn bounce={0} duration={0.5} distance={40} >
-                <h1 className='text-slate-600'>
+                <h1 className='text-gray-600 dark:text-gray-200'>
                     Projects
                 </h1>
             </FadeIn>
 
         </section>
 
-        {projects.map(({ title, description, id, icon, liveSite, repo, image, colorBottomRight, colorTopLeft, accentColor, techs }) => (
+        {projects.map(({ title, description, id, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs }) => (
             <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className="mb-10">
-                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0  before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorBottomRight?.hex})` }}>
-                    <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
+                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorTopLeft?.hex})` }}>
+                    {/* <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' /> */}
                     <div className='layout relative max-w-screen-lg'>
-                        <h2 className='text-slate-200'>
+                        {wip && <div className="bg-white text-black w-fit px-2 rounded-md mb-2">
+                            WORK IN PROGRESS
+                        </div>}
+                        <h2 className='text-gray-200'>
                             <div className=''>{title}</div>
                         </h2>
                         <p className="text-xl mt-8 max-w-md text-white/80">{description}</p>
@@ -42,11 +45,18 @@ export default function Projects({ projects }: props) {
                             {mapTechs(techs)}
                         </div>
                         <div className='mt-12 flex items-center '>
-                            <a href={liveSite} target={'_blank'} rel='noreferrer' className='group mr-4 relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
-                                Live Website
-                                <HiChevronDoubleRight />
-                            </a>
-                            {repo && <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-slate-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-slate-50' style={{ color: accentColor?.hex }}>
+                            {liveSite ?
+                                <a href={liveSite} target={'_blank'} rel='noreferrer noopener' className='group  active:scale-95 mr-4 relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-gray-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-gray-50' style={{ color: accentColor?.hex }}>
+                                    Live Website
+                                    <HiChevronDoubleRight />
+                                </a>
+                                :
+                                <button disabled className='h-16 items-center rounded-2xl  bg-gray-50/50  px-7 text-xl font-' style={{ color: accentColor?.hex }}>
+                                    Coming Soon
+                                </button>
+                            }
+
+                            {repo && <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-gray-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-gray-50' style={{ color: accentColor?.hex }}>
                                 View Code
                                 <ImGithub />
                             </a>}
@@ -67,7 +77,7 @@ export default function Projects({ projects }: props) {
         ))}
 
         <FadeIn bounce={0} duration={0.5} distance={20} once={false} startScale={1} >
-            <div className='text-center mx-auto text-3xl font-bold mt-32 text-gray-700'>And more coming soon...</div>
+            <div className='text-center mx-auto text-3xl font-bold mt-32 text-gray-700 dark:text-gray-500 pb-20'>And more coming soon...</div>
         </FadeIn>
 
     </Layout>

@@ -31,7 +31,7 @@ const FadeIn = ({
 }: IProps): JSX.Element => {
   return (
     <div className={className} style={style}>
-      <InView triggerOnce={once} initialInView={false} rootMargin='-60px'>
+      <InView triggerOnce={true} initialInView={false} rootMargin='-60px'>
         {({ inView, ref }) => (
           <div ref={ref} className='h-full'>
             <motion.div

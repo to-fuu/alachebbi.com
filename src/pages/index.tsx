@@ -19,7 +19,7 @@ import {
   HiChevronDoubleDown,
   HiChevronDoubleRight, HiOutlineDocumentText
 } from 'react-icons/hi';
-import { RiCopperDiamondFill } from 'react-icons/ri';
+import { BiDevices } from 'react-icons/bi';
 import {
   SiAlpinedotjs, SiCsharp,
   SiCss3, SiDatocms, SiGraphql,
@@ -34,6 +34,9 @@ import {
 } from 'react-icons/si';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { IoLogoGameControllerA } from 'react-icons/io'
+import { ImEarth, ImLinkedin } from 'react-icons/im';
+
 SwiperCore.use([Navigation])
 
 
@@ -54,16 +57,17 @@ export default function HomePage({ projects, testimonials }: props) {
   return (
     <Layout headerDark={false}>
       <Seo />
-      <main className='bg-white max-w-[100vw] overflow-x-clip '>
-        <section className='relative  overflow-y-clip bg-gradient-to-br from-blue-600 to-green-400 text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-overlay '>
-          <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat ' />
+      <main className='dark:bg-black bg-white max-w-[100vw] overflow-x-clip '>
+        <section className='relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
+          <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
+          <div className='absolute inset-x-0 top-0 bottom-0 hidden bg-repeat dark:top-1/2 bg-gradient-to-b from-transparent to-white dark:to-black dark:block' />
           <div className='relative flex flex-col w-full max-w-screen-xl px-10 pt-24 text-left layout sm:pt-40 xl:px-0'>
             <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
               <h1 className='group mt-4 flex flex-col leading-[1.1] justify-center items-center '>
-                <div className='mb-2 font-bold opacity-60 scale-90 transition duration-300 [text-shadow:2px_2px_#00000033] text-center'>
+                <div className='mb-4 text-3xl font-bold text-center transition duration-300 scale-90 opacity-60'>
                   Howdy, I&apos;m Ala
                 </div>
-                <div className='text-center'>
+                <div className='text-center sm:max-w-screen-lg sm:px-20'>
                   Building modern websites and fun game experiences
                 </div>
               </h1>
@@ -76,7 +80,7 @@ export default function HomePage({ projects, testimonials }: props) {
                     s1Ref.current!.scrollIntoView({ behavior: 'smooth' });
                   }}
                   ref={discRef}
-                  className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition duration-300 shadow cursor-down group rounded-2xl bg-white/90 px-7 text-slate-700 hover:opacity-80'
+                  className='relative inline-flex items-center h-16 gap-4 text-xl font-medium text-gray-700 transition duration-300 shadow active:scale-95 cursor-down group rounded-2xl bg-white/90 px-7 hover:opacity-80'
                 >
                   Discover
                   <HiChevronDoubleDown className='transition duration-300 group-hover:translate-y-1' />
@@ -91,7 +95,7 @@ export default function HomePage({ projects, testimonials }: props) {
                   href='/cv-alachebbi.pdf'
                   target={'_blank'}
                   ref={cvRef}
-                  className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition duration-300 bg-white bg-opacity-50 shadow select-none whitespace-nowrap cursor-newtab rounded-2xl px-7 text-slate-700/70 hover:bg-opacity-100 hover:text-blue-800'
+                  className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition duration-300 bg-white bg-opacity-50 shadow select-none active:scale-95 whitespace-nowrap cursor-newtab rounded-2xl px-7 text-gray-700/70 hover:bg-opacity-100 hover:text-blue-800'
                 >
                   Get Resume
                   <HiOutlineDocumentText />
@@ -100,69 +104,35 @@ export default function HomePage({ projects, testimonials }: props) {
             </FadeIn>
           </div>
 
-          <div className='relative flex mt-12 '>
-            <FadeIn className='w-full' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
+          <div className='relative flex w-full mt-20 '>
+            <FadeIn className='w-full ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
               <CodeWindow
-                className='w-full -mb-32'
+                className='w-full '
               />
             </FadeIn>
 
-            <FadeIn className='absolute w-full' startScale={0.9} bounce={0} duration={0.5} delay={0.4}>
-              <HeaderWindow
-                className='absolute left-0 right-0 hidden -mb-32 scale-75 -translate-x-full opacity-50 mr-52 xl:block'
-                tab1='Emira Tlili port...'
-                tab1Icon={
-                  <img
-                    src='https://www.datocms-assets.com/60949/1645552293-etfavicon.svg'
-                    className='w-4 h-4'
-                    alt=''
-                  />
-                }
-                tab2='Coffee Cup Ind...'
-                tab2Icon={<RiCopperDiamondFill />}
-                url='emiratlili.com'
-                img='https://www.datocms-assets.com/60949/1645552277-etlili.jpeg'
-              />
-            </FadeIn>
 
-            <FadeIn className='absolute w-full' startScale={0.9} bounce={0} duration={0.5} delay={0.4}>
-              <HeaderWindow
-                className='absolute left-0 right-0 hidden -mb-32 scale-75 translate-x-full opacity-50 ml-52 xl:block'
-                tab1='Postuler at jo..'
-                tab1Icon={
-                  <img
-                    src='https://www.datocms-assets.com/60949/1645555012-heyvast-icon.svg'
-                    className='w-4 h-4'
-                    alt=''
-                  />
-                }
-                tab2='Cosi.tn'
-                tab2Icon={<RiCopperDiamondFill />}
-                url='jobs.heyvast.tn'
-                img='https://www.datocms-assets.com/60949/1645554989-heyjobs.png'
-              />
-            </FadeIn>
           </div>
         </section>
 
         <section
-          className='relative flex flex-col items-center max-w-screen-lg pt-40 pb-12 text-center layout scroll-mt-20'
+          className='relative flex flex-col max-w-screen-md pt-32 pb-12 layout scroll-mt-20'
           id='about'
           ref={s1Ref}
         >
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-            <h2 className='text-slate-600'>
+            <h2 className='max-w-xl text-5xl text-gray-600 dark:text-gray-200'>
               Passionate Frontend and <br /> Game developer
             </h2>
           </FadeIn>
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-            <p className='max-w-xl mt-8 mb-4 text-xl text-slate-600'>
-              Welcome to my portfolio! I'm Ala, a passionate programmer, gamer, artist and UI aspiring designer. I currently work as a fullstack web and mobile developer at <a href="https://brandbox.tn" target={'_blank'} rel='noreferrer' className='text-yellow-600 underline cursor-newtab'>Brandbox</a>.
+            <p className='max-w-2xl mt-20 mb-4 text-xl text-gray-600 dark:text-gray-400'>
+              Welcome to my portfolio! I'm Ala, a passionate programmer, gamer, artist and UI aspiring designer. I currently work as a fullstack web and mobile developer at <a href="https://brandbox.tn" target={'_blank'} rel='noreferrer noopener' className='text-yellow-600 underline cursor-newtab'>Brandbox</a>.
 
               <br /> My favourite and most used frameworks are <em className='font-medium'>Next.js</em> and <em className='font-medium'>TailwindCSS</em> for frontend development and <em className='font-medium'>Unity3D</em> for game development.
             </p>
           </FadeIn>
-
+          {/* 
           <FadeIn
             bounce={0}
             duration={0.5}
@@ -171,7 +141,7 @@ export default function HomePage({ projects, testimonials }: props) {
             className='w-full max-w-screen-sm '
           >
 
-            <div className='flex flex-wrap items-center justify-center w-full gap-12 mt-8 text-3xl text-gray-800'>
+            <div className='flex flex-wrap items-center w-full gap-8 mt-8 text-3xl text-gray-800'>
 
               <Tooltip content="Javascript">
                 <SiJavascript className='text-yellow-600' />
@@ -195,33 +165,33 @@ export default function HomePage({ projects, testimonials }: props) {
 
             </div>
 
-          </FadeIn>
+          </FadeIn> */}
 
-          <FadeIn
+          {/* <FadeIn
             bounce={0}
             duration={0.6}
             distance={40}
             once={false}
             className='w-full max-w-screen-sm '>
-            <div className='flex flex-wrap items-center justify-center w-full gap-12 mt-12 text-3xl text-gray-800'>
+            <div className='flex flex-wrap items-center w-full gap-8 mt-12 text-3xl text-gray-800'>
               <Tooltip content="Unity3D">
-                <SiUnity className='text-gray-700' />
+                <SiUnity className='text-gray-700 dark:text-gray-200' />
               </Tooltip>
               <Tooltip content='Next.js'>
-                <SiNextdotjs />
+                <SiNextdotjs className='dark:text-gray-200' />
               </Tooltip>
               <Tooltip content="React / React-Native">
                 <SiReact className='text-sky-600' />
               </Tooltip>
               <Tooltip content="Alpine.js">
-                <SiAlpinedotjs className='text-gray-600' />
+                <SiAlpinedotjs className='text-gray-600 dark:text-gray-200' />
               </Tooltip>
               <Tooltip content="TailwindCSS">
                 <SiTailwindcss className='text-emerald-500' />
               </Tooltip>
 
               <Tooltip content="MySQL">
-                <SiMysql className='text-4xl text-orange-700' />
+                <SiMysql className='text-4xl text-orange-700 dark:text-orange-400' />
               </Tooltip>
               <Tooltip content="Grapql">
                 <SiGraphql className='text-pink-600' />
@@ -239,39 +209,66 @@ export default function HomePage({ projects, testimonials }: props) {
 
 
             </div>
+          </FadeIn> */}
+
+          {/* <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <h2 className='max-w-xl mt-20 text-5xl text-gray-600 dark:text-gray-200'>
+              Things I will help you with
+            </h2>
+          </FadeIn> */}
+
+          <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <div className="flex p-4 mt-20 duration-300 dark:text-white hover:bg-blue-500/5 rounded-xl">
+              <div className="p-1.5 bg-blue-500 mb-auto rounded-xl bg-opacity-40 text-blue-600 dark:text-blue-200 mr-8">
+                <BiDevices className='text-3xl' />
+              </div>
+              <div className="">
+                <h5 className='text-2xl'>Website development</h5>
+                <p className='mt-4 text-gray-600 dark:text-gray-400'>Made with React, plain HTML and CSS or Wordpress; Landing page or E-Commerce, the choice is yours. Performance and SEO are guaranteed!</p>
+              </div>
+            </div>
           </FadeIn>
-
-
+          <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <div className="flex p-4 mt-8 duration-300 dark:text-white hover:bg-pink-500/5 rounded-xl">
+              <div className="p-1.5 bg-pink-500 mb-auto rounded-xl bg-opacity-40 text-pink-600 dark:text-pink-200 mr-8">
+                <IoLogoGameControllerA className='text-3xl' />
+              </div>
+              <div className="">
+                <h5 className='text-2xl'>Game development</h5>
+                <p className='mt-4 text-gray-600 dark:text-gray-400'>I will help you turn your game idea into reality or help you implementing a game mechanic in Unity</p>
+              </div>
+            </div>
+          </FadeIn>
           <FadeIn
-            className='hidden w-full mt-4'
             bounce={0}
             duration={0.5}
             distance={40}
             once={false}
+            delay={0.1}
+            className="mx-auto mt-24 w-fit"
           >
-            <div className='w-full mt-8 space-y-4'>
-              <DetailsGroup
-                items={[
-                  { title: 'Frontend Development', content: 'lorem' },
-                  { title: 'Game Development', content: 'lorem' },
-                  { title: 'App Development', content: 'lorem' },
-                ]}
-              />
-            </div>
+            <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" target={'_blank'} rel='noreferrer noopener' className='relative inline-flex items-center h-16 gap-4 text-xl font-medium text-white transition-all duration-300 bg-blue-600 shadow active:scale-95 dark:text-blue-700 dark:bg-white group hover:gap-6 px-7 rounded-2xl hover:opacity-100 opacity-80'>
+              Send me a message
+              <div className="relative">
+                <HiChevronDoubleRight className="transition duration-300 group-hover:opacity-0" />
+                <ImLinkedin className="absolute top-0 transition duration-300 delay-75 opacity-0 group-hover:opacity-100" />
+              </div>
+            </a>
           </FadeIn>
+
         </section>
 
         <FadeIn bounce={0} duration={0.75} distance={40} once={false}>
           <section className='pt-10 xl:pb-20 scroll-mt-40' id='projects'>
-            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorBottomRight?.hex})` }} className='transition-all duration-300 relative mx-auto max-w-screen-xl overflow-clip xl:rounded-3xl pt-20 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100'>
-              <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
+            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorTopLeft?.hex})` }} className='relative max-w-screen-xl pt-20 mx-auto transition-all duration-300 overflow-clip xl:rounded-3xl'>
+              {/* <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' /> */}
               <div className='relative max-w-screen-lg layout'>
-                <h2 className='text-slate-200'>
+                <h2 className='text-gray-200'>
                   <div className=''>Latest projects</div>
                 </h2>
                 <div className='flex items-center mt-12 '>
                   <Link href={'/projects'} passHref>
-                    <a className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow group rounded-2xl bg-slate-50/75 px-7 hover:gap-6 hover:bg-slate-50' style={{ color: projects[selectedSlide].accentColor.hex }}>
+                    <a className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow active:scale-95 group rounded-2xl bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50' style={{ color: projects[selectedSlide].accentColor.hex }}>
                       Browse all
                       <HiChevronDoubleRight />
                     </a>
@@ -308,7 +305,7 @@ export default function HomePage({ projects, testimonials }: props) {
                   {projects.map(({ title, id, icon, liveSite, image, repo }, index) => (
 
                     <SwiperSlide key={`project_${id}`}
-                      className={`cursor-grab overflow-visible transition duration-300 w-full `}
+                      className={`cursor-grab overflow-visible transition duration-300 w-full ${selectedSlide !== index && 'pointer-events-none'}`}
                     >
                       <ProjectWindow
                         repo={repo}
@@ -330,48 +327,48 @@ export default function HomePage({ projects, testimonials }: props) {
           </section>
         </FadeIn>
 
-        <section className='pt-16 bg-blue-50 sm:pt-32 sm:pb-16'>
+        <section className='pt-16 dark:bg-gray-900/50 bg-blue-50 sm:pt-32 sm:pb-16'>
           <div className="layout">
             <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-              <h2 className='text-slate-600 '>
+              <h2 className='text-gray-600 dark:text-gray-200'>
                 <div className=''>My Career so far</div>
               </h2>
             </FadeIn>
 
             <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-              <div className="grid sm:grid-cols-2 mx-auto mt-16 gap-12">
+              <div className="grid gap-12 mx-auto mt-16 sm:grid-cols-2">
                 <div className="">
-                  <h3 className='text-3xl text-slate-600 font-black'>Education</h3>
+                  <h3 className='text-3xl font-black text-gray-600 dark:text-gray-200'>Education</h3>
                   <ul className='mt-8 space-y-4 font-semibold'>
-                    <li className='flex flex-col   space-y-1'>
-                      <span className='text-2xl font-semibold'>Software Engineering</span>
-                      <span className='text-lg font-medium text-slate-800'>Higher Institute of Applied Sciences and Technology of Sousse</span>
+                    <li className='flex flex-col space-y-1'>
+                      <span className='text-2xl font-semibold dark:text-gray-200'>Software Engineering</span>
+                      <span className='text-lg font-medium text-gray-800 dark:text-gray-400'>Higher Institute of Applied Sciences and Technology of Sousse</span>
                       <p className='text-transparent'>_</p>
                     </li>
-                    <li className='flex flex-col  space-y-1'>
-                      <span className='text-2xl font-semibold'>Integrated Preparatory Course</span>
-                      <span className='text-lg font-medium text-slate-800'>Higher Institute of Applied Sciences and Technology of Sousse</span>
+                    <li className='flex flex-col space-y-1'>
+                      <span className='text-2xl font-semibold dark:text-gray-200'>Integrated Preparatory Course</span>
+                      <span className='text-lg font-medium text-gray-800 dark:text-gray-400'>Higher Institute of Applied Sciences and Technology of Sousse</span>
                       <p className='text-transparent'>_</p>
                     </li>
                   </ul>
                 </div>
                 <div className="">
-                  <h3 className='text-3xl text-slate-600 font-black'>Work</h3>
+                  <h3 className='text-3xl font-black text-gray-600 dark:text-gray-200'>Work</h3>
                   <ul className='mt-8 space-y-4'>
-                    <li className='flex flex-col   space-y-1'>
-                      <span className='text-2xl font-semibold'>Fullstack developer and UI designer</span>
-                      <span className='text-lg font-medium text-slate-800'>Brandbox  <span className='text-white bg-amber-500 rounded-md px-2 text-xs py-0.5 ml-1 -translate-y-px inline-block'>CURRENT</span> </span>
-                      <p className='text-slate-600'>Lead web developer and UI designer at a creative agency.</p>
+                    <li className='flex flex-col space-y-1'>
+                      <span className='text-2xl font-semibold dark:text-gray-200'>Fullstack developer and UI designer</span>
+                      <span className='text-lg font-medium text-gray-800 dark:text-gray-400'>Brandbox  <span className='text-white bg-amber-500 rounded-md px-2 text-xs py-0.5 ml-1 -translate-y-px inline-block'>CURRENT</span> </span>
+                      <p className='text-gray-600 dark:text-gray-500'>Lead web developer and UI designer at a creative agency.</p>
                     </li>
-                    <li className='flex flex-col   space-y-1'>
-                      <span className='text-2xl font-semibold'>Freelancer</span>
-                      <span className='text-lg font-medium text-slate-800'>Fiverr / Upwork</span>
-                      <p className='text-slate-600'>Game dev and Fullstack Web freelancer</p>
+                    <li className='flex flex-col space-y-1'>
+                      <span className='text-2xl font-semibold dark:text-gray-200'>Freelancer</span>
+                      <span className='text-lg font-medium text-gray-800 dark:text-gray-400'>Fiverr / Upwork</span>
+                      <p className='text-gray-600 dark:text-gray-500'>Game dev and Fullstack Web freelancer</p>
                     </li>
-                    <li className='flex flex-col   space-y-1'>
-                      <span className='text-2xl font-semibold'>Game development Instructor</span>
-                      <span className='text-lg font-medium text-slate-800'>Gomycode</span>
-                      <p className='text-slate-600'>Game development instructor at a training center</p>
+                    <li className='flex flex-col space-y-1'>
+                      <span className='text-2xl font-semibold dark:text-gray-200'>Game development Instructor</span>
+                      <span className='text-lg font-medium text-gray-800 dark:text-gray-400'>Gomycode</span>
+                      <p className='text-gray-600 dark:text-gray-500'>Game development instructor at a training center</p>
                     </li>
                   </ul>
                 </div>
@@ -399,18 +396,17 @@ export default function HomePage({ projects, testimonials }: props) {
           </div>
         </section>
 
-        <section className='pt-16 bg-gradient-to-b from-blue-50 to-white sm:py-32' id='blog'>
-          <div className='layout'>
+        <section className='relative pt-16 bg-gradient-to-b dark:from-gray-900/50 dark:to-black from-blue-50 to-white sm:py-32' id='blog'>
+          <div className='layout '>
             <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-              <h2 className='text-center text-slate-600'>
+              <h2 className='text-center text-gray-600 dark:text-gray-200'>
                 <div className=''>My clients said...</div>
               </h2>
             </FadeIn>
 
+            <FadeIn bounce={0} duration={0.5} distance={40} once={false} className='relative'>
 
-
-            <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-              <div className="relative max-w-screen-xl py-20 mx-auto mt-20 bg-gradient-to-b from-white to-transparent rounded-xl">
+              <div className="relative max-w-screen-xl py-20 mx-auto mt-12 sm:mt-20 bg-gradient-to-b dark:from-gray-900/50 from-white to-transparent rounded-3xl">
                 <Swiper
                   slidesPerView={'auto'}
                   className=' w-full h-[320px]'
@@ -418,7 +414,7 @@ export default function HomePage({ projects, testimonials }: props) {
                 >
 
                   {testimonials.map(({ initials, name, review, thumb, title }) => (<SwiperSlide
-                    className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab transition duration-300 w-full flex flex-col  font-semibold text-gray-800`}
+                    className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab transition duration-300 w-full flex flex-col  font-semibold text-gray-800 dark:text-gray-200`}
                   >
                     <p className='text-xl leading-snug sm:text-3xl'>
                       {review}
@@ -446,7 +442,7 @@ export default function HomePage({ projects, testimonials }: props) {
           </div>
         </section>
       </main>
-    </Layout>
+    </Layout >
   );
 }
 
@@ -458,6 +454,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       projects, testimonials
-    }
+    },
+    revalidate: 10
+
   }
 }

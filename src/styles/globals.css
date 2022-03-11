@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
- 
-  *{
-    scrollbar-color: #9CA3AF #D1D5DB;
+  * {
+    scrollbar-color: #9ca3af #d1d5db;
     scrollbar-width: thin;
   }
   ::-webkit-scrollbar {
-    @apply w-2 h-1.5 ;
+    @apply h-1.5 w-2;
   }
   ::-webkit-scrollbar-track {
     @apply bg-gray-300;
@@ -26,9 +24,8 @@
     cursor: url('/images/scroll-down.png') 10 10, pointer;
   }
 
-
-  button{
-    @apply select-none 
+  button {
+    @apply select-none;
   }
 
   /* #region  /**=========== Typography =========== */
@@ -103,3 +100,19 @@
   }
 }
 
+.animate-blink {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: step-end;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

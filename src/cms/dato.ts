@@ -48,13 +48,14 @@ async function fetchCmsAPI(
 export async function getAllProjects(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
    {
-    allProjects(orderBy: _createdAt_ASC) {
+    allProjects(orderBy: [wip_ASC,order_ASC]) {
       description
       liveSite
       repo
       title
       year
       techs
+      wip
       id
       icon {
         url
@@ -82,13 +83,14 @@ export async function getAllProjects(): Promise<Project[]> {
 export async function getHomeProjects(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
  {
-  allProjects(filter: {featured: {eq: "true"}},orderBy: _createdAt_ASC, first: "4") {
+  allProjects(filter: {featured: {eq: "true"}},orderBy: [wip_ASC,order_ASC], first: "4") {
     description
     liveSite
     repo
     title
     year
     techs
+    wip
     id
     icon {
       url

@@ -15,7 +15,7 @@ export default function NotFoundPage() {
         <section className='bg-white'>
           <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
 
-            <h1 className='mt-8 text-4xl md:text-6xl text-slate-800'>Nothing here to l⊙﹏⊙k at </h1>
+            <h1 className='mt-8 text-4xl md:text-6xl text-gray-800'>Nothing here to l⊙﹏⊙k at </h1>
 
 
             <FadeIn

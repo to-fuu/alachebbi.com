@@ -6,6 +6,7 @@ type Project = {
   repo: string;
   title: string;
   id: string;
+  wip: boolean;
   icon: Image;
   image: Image;
   accentColor: Color;

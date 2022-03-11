@@ -2,57 +2,76 @@ import useScroll from '@/hooks/useScroll';
 import Link from 'next/link';
 import * as React from 'react';
 import { ImGithub, ImLinkedin } from 'react-icons/im';
+import { IoMdCloudyNight, IoMdMoon, IoMdSunny } from 'react-icons/io';
 
 
-const links = [
-  { href: '#about', label: 'About me', topScroll: 800, bottomScroll: 1600 },
-  { href: '#projects', label: 'Projects', topScroll: 1600, bottomScroll: 2800 },
-  // { href: '#blog', label: 'Blog', topScroll: 2800, bottomScroll: 3200 },
-];
+const isDark = (): boolean =>
+  (localStorage && !localStorage.alatheme ? true : localStorage.alatheme === 'dark')
+
+const getThemeString = (isDark: boolean): string => (isDark ? 'dark' : 'light')
+
+// const links = [
+//   { href: '#about', label: 'About me', topScroll: 800, bottomScroll: 1600 },
+//   { href: '#projects', label: 'Projects', topScroll: 1600, bottomScroll: 2800 },
+// ];
 
 export default function Header({ headerDark, hideNav }: { headerDark?: boolean, hideNav?: boolean }) {
+
+  const [isDarkMode, setDarkMode] = React.useState(false)
+
+  const applyTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
+
+  const toggleMode = (): void => {
+    localStorage.alatheme = getThemeString(!isDarkMode)
+    setDarkMode(!isDarkMode)
+  }
+
+  React.useEffect(() => {
+    console.log(localStorage.alatheme);
+    console.log(isDark());
+
+    setDarkMode(isDark())
+
+  }, [])
+
+  React.useEffect(() => {
+    applyTheme()
+  }, [isDarkMode])
 
   const scroll = useScroll()
 
   return (
-    <header className={`px-4 sm:px-0 fixed w-full top-0 z-50 transition-all duration-300 border-t border-transparent ${scroll > 200 ? 'bg-zinc-900 backdrop-blur-md border-t-slate-400' : ''}`}>
+    <header className={`px-4 sm:px-0 fixed w-full top-0 z-50 transition-all duration-300 border-t ${headerDark ? 'bg-gray-900/80' : ''} border-transparent ${scroll > 200 ? 'bg-gray-900/80 dark:bg-gray-900/50 backdrop-blur-md border-t-gray-400' : ''}`}>
       <div className={`layout flex  items-center justify-between transition-all duration-500 ${scroll > 200 ? 'h-20' : 'h-24'}`}>
         <Link href={'/'} passHref>
-          <a className={`font-bold ${headerDark ? 'text-zinc-700' : 'text-zinc-300'}  ${scroll > 200 ? '!text-zinc-300 ' : ''} duration-300`}>
+          <a className={`font-bold text-xl text-gray-300  ${scroll > 200 ? '!text-gray-300 ' : ''} duration-300`}>
             Ala Chebbi
           </a>
         </Link>
-        <nav>
-          <ul className='flex items-center justify-between space-x-1'>
-            {!hideNav && <>
-              {
-                links.map(({ href, label, topScroll, bottomScroll }) => (
-                  <li className='hidden sm:block' key={`${href}${label}`}>
-                    <button onClick={() => {
-                      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-                    }} className={`${headerDark ? 'text-zinc-700 hover:text-zinc-800' : 'text-zinc-300 hover:text-zinc-50'}   font-medium py-2 px-4 rounded-lg ${scroll > 200 ? 'hover:bg-zinc-700/50 !text-zinc-300 hover:!text-zinc-50' : `${headerDark ? 'hover:bg-black/20' : 'hover:bg-white/20'} `} duration-300 ${scroll > topScroll && scroll < bottomScroll && 'bg-zinc-700/50'}`}>
-                      {label}
-                    </button>
-                  </li>
-                ))
-              }</>}
-            <li>
-              <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" target={'_blank'} rel='noreferrer' className={`py-3 sm:py-2 ml-4 shadow font-medium group items-center gap-4 px-3 sm:px-5 inline-flex rounded-lg transition-all relative duration-300  
-              ${headerDark ? `${scroll >= 200 ? 'bg-slate-50/90 hover:bg-slate-50 text-blue-700' : 'text-slate-50/90 hover:bg-blue-600/90   bg-blue-600'}` : 'bg-slate-50/90 hover:bg-slate-50   text-blue-700'}`}>
-                <div className="hidden sm:block">Get in touch</div>
-                <ImLinkedin />
-              </a>
-            </li>
-            {/* <li>
-              <a href="https://github.com/to-fuu/alachebbi.com" target={'_blank'} rel='noreferrer' className={`py-3 ml-1 shadow font-medium group items-center gap-4 px-3 inline-flex rounded-lg transition-all relative duration-300  
-              ${headerDark ? `${scroll >= 200 ? 'bg-slate-50/90 hover:bg-slate-50   text-blue-700' : 'text-slate-50/90 hover:bg-blue-600/90   bg-blue-600'}` : 'bg-slate-50/90 hover:bg-slate-50   text-blue-700'}`}>
-                <ImGithub />
-              </a>
-            </li> */}
-          </ul>
+        <nav className='flex items-center gap-2'>
+
+
+          <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" target={'_blank'} rel='noreferrer noopener' className={`py-3 sm:py-2 ml-4 font-medium group items-center gap-4 px-3 sm:px-5 inline-flex rounded-lg transition-all relative duration-300  
+            text-white hover:bg-white/20`}>
+            <div className="hidden sm:block">Get in touch</div>
+            <ImLinkedin />
+          </a>
+          <button onClick={() => {
+            toggleMode()
+          }} className={`rounded-full  text-white p-2 text-xl hover:bg-blue-600/80 duration-300 hover:text-white`}>
+            {isDarkMode ? <IoMdMoon /> : <IoMdSunny />}
+          </button>
+
 
         </nav>
       </div>
-    </header>
+
+    </header >
   );
 }

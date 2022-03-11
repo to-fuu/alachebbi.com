@@ -39,11 +39,11 @@ export const ProjectWindow = React.forwardRef(
             {icon}
             {title}
           </div>
-          {!hideButtons && <a href={`${url}`} target='_blank' rel='noreferrer' className='mr-2 hover:shadow-md hover:-translate-y-px duration-150 inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
+          {!hideButtons && <a href={`${url}`} target='_blank' rel='noreferrer noopener' className='mr-2 hover:shadow-md hover:-translate-y-px duration-150 inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
             Visit
             <FiArrowUpRight />
           </a>}
-          {!hideButtons && repo && <a href={repo} target='_blank' rel='noreferrer' className='disabled:bg-white disabled:shadow-sm disabled:translate-y-0 hover:shadow-md hover:-translate-y-px duration-150 disabled:opacity-50 mr-auto inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
+          {!hideButtons && repo && <a href={repo} target='_blank' rel='noreferrer noopener' className='disabled:bg-white disabled:shadow-sm disabled:translate-y-0 hover:shadow-md hover:-translate-y-px duration-150 disabled:opacity-50 mr-auto inline-flex shadow-sm items-center gap-2 bg-white px-2 rounded-lg text-sm py-1'>
             <ImGithub />
             Code
           </a>}
