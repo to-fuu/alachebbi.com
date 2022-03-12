@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }
 }
 
-const mapTechs = (techs: string[]) => {
+export const mapTechs = (techs: string[]) => {
     return techs.map((tech) => {
         switch (tech) {
             case "next": return <Tooltip content='Next.js'>

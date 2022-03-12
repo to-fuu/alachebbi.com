@@ -83,7 +83,7 @@ export async function getAllProjects(): Promise<Project[]> {
 export async function getHomeProjects(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
  {
-  allProjects(filter: {featured: {eq: "true"}},orderBy: [wip_ASC,order_ASC], first: "4") {
+  allProjects(filter: {featured: {eq: "true"}},orderBy: [wip_ASC,order_ASC], first: "5") {
     description
     liveSite
     repo

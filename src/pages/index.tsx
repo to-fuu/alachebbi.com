@@ -1,20 +1,18 @@
 import * as datoCmsApi from '@/cms/dato';
 import Project from '@/cms/types/Project';
 import Testimonial from '@/cms/types/Testimonial';
+import ProjectCard from '@/components/cards/projectCard';
 import FadeIn from '@/components/Fadein';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import { CodeWindow } from '@/components/windows/codewindow';
-import { ProjectWindow } from '@/components/windows/projectwindow';
-import { useTransform, useViewportScroll } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
-import { BiDevices } from 'react-icons/bi';
+import { BiChevronRight, BiDevices } from 'react-icons/bi';
 import {
-  HiArrowLeft,
-  HiArrowRight,
   HiChevronDoubleDown,
   HiChevronDoubleRight, HiOutlineDocumentText
 } from 'react-icons/hi';
@@ -22,15 +20,16 @@ import { ImLinkedin } from 'react-icons/im';
 import { IoLogoGameControllerA } from 'react-icons/io';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion } from 'framer-motion'
+
 SwiperCore.use([Navigation])
 
 
 interface props {
   projects: Project[]
   testimonials: Testimonial[]
+  remaining: number
 }
-export default function HomePage({ projects, testimonials }: props) {
+export default function HomePage({ projects, testimonials, remaining }: props) {
   const s1Ref = React.useRef<HTMLDivElement>(null);
   const discRef = React.useRef<HTMLButtonElement>(null);
   const cvRef = React.useRef<HTMLAnchorElement>(null);
@@ -96,14 +95,13 @@ export default function HomePage({ projects, testimonials }: props) {
 
           <div className='relative flex w-full mt-20 '>
             <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px]">
-              <FadeIn className='w-full ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
+              <FadeIn className='w-full relative ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
                 <CodeWindow
                   className='w-full '
                 />
               </FadeIn>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none"></div>
             </motion.div>
-
-
           </div>
         </section>
 
@@ -209,8 +207,10 @@ export default function HomePage({ projects, testimonials }: props) {
             </h2>
           </FadeIn> */}
 
+
+
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-            <div className="flex p-4 mt-20 duration-300 dark:text-white hover:bg-blue-500/5 rounded-xl">
+            <div className="flex p-4 mt-20 duration-300 dark:text-white hover:bg-blue-500/20 rounded-xl">
               <div className="p-1.5 bg-blue-500 mb-auto rounded-xl bg-opacity-40 text-blue-600 dark:text-blue-200 mr-8">
                 <BiDevices className='text-3xl' />
               </div>
@@ -221,7 +221,7 @@ export default function HomePage({ projects, testimonials }: props) {
             </div>
           </FadeIn>
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-            <div className="flex p-4 mt-8 duration-300 dark:text-white hover:bg-pink-500/5 rounded-xl">
+            <div className="flex p-4 mt-8 duration-300 dark:text-white hover:bg-pink-500/20 rounded-xl">
               <div className="p-1.5 bg-pink-500 mb-auto rounded-xl bg-opacity-40 text-pink-600 dark:text-pink-200 mr-8">
                 <IoLogoGameControllerA className='text-3xl' />
               </div>
@@ -231,92 +231,36 @@ export default function HomePage({ projects, testimonials }: props) {
               </div>
             </div>
           </FadeIn>
-          <FadeIn
-            bounce={0}
-            duration={0.5}
-            distance={40}
-            once={false}
-            delay={0.1}
-            className="mx-auto mt-24 w-fit"
-          >
-            <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" target={'_blank'} rel='noreferrer noopener' className='relative inline-flex items-center h-16 gap-4 text-xl font-medium text-white transition-all duration-300 bg-blue-600 shadow active:scale-95 dark:text-blue-700 dark:bg-white group hover:gap-6 px-7 rounded-2xl hover:opacity-100 opacity-80'>
-              Send me a message
-              <div className="relative">
-                <HiChevronDoubleRight className="transition duration-300 group-hover:opacity-0" />
-                <ImLinkedin className="absolute top-0 transition duration-300 delay-75 opacity-0 group-hover:opacity-100" />
-              </div>
-            </a>
-          </FadeIn>
 
         </section>
 
-        <FadeIn bounce={0} duration={0.75} distance={40} once={false}>
-          <section className='pt-10 xl:pb-20 scroll-mt-40' id='projects'>
-            <div style={{ backgroundImage: `linear-gradient(to bottom right, ${projects[selectedSlide].colorTopLeft?.hex}, ${projects[selectedSlide].colorTopLeft?.hex})` }} className='relative max-w-screen-xl pt-20 mx-auto transition-all duration-300 overflow-clip xl:rounded-3xl'>
-              {/* <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' /> */}
-              <div className='relative max-w-screen-lg layout'>
-                <h2 className='text-gray-200'>
-                  <div className=''>Latest projects</div>
-                </h2>
-                <div className='flex items-center mt-12 '>
-                  <Link href={'/projects'} passHref>
-                    <a className='relative inline-flex items-center h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow active:scale-95 group rounded-2xl bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50' style={{ color: projects[selectedSlide].accentColor.hex }}>
-                      Browse all
-                      <HiChevronDoubleRight />
-                    </a>
-                  </Link>
-                  <button ref={projectsPrev} className='p-3 ml-auto mr-4 text-blue-700 transition duration-300 border-t rounded-full shadow disabled:bg-white/80 disabled:opacity-50 bg-white/80 backdrop-blur-sm hover:bg-white'>
-                    <HiArrowLeft />
-                  </button>
-                  <button ref={projectsNext} className='p-3 text-blue-700 transition duration-300 border-t rounded-full shadow disabled:bg-white/80 disabled:opacity-50 bg-white/80 backdrop-blur-sm hover:bg-white'>
-                    <HiArrowRight />
-                  </button>
+        <div className="layout mt-12">
+          <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <h2 className='max-w-xl text-5xl text-gray-600 dark:text-gray-200'>
+              Featured Projects
+            </h2>
+          </FadeIn>
+        </div>
+        <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20 layout mt-12">
+
+
+            {projects.map((p, i) => (
+              <ProjectCard project={p} key={p.title} />
+            ))}
+            <Link href='/projects'>
+              <a className="flex relative overflow-clip flex-col group items-start justify-start w-full h-full p-12 text-gray-900 duration-300 hover:-translate-y-2 rounded-2xl dark:text-gray-200 ">
+                <div className="absolute scale-1 rounded-full w-12 bottom-12 right-12 h-12  scale-0  bg-blue-500 group-hover:scale-[25] opacity-0 duration-300  group-hover:opacity-100"></div>
+                <span className='max-w-xs text-3xl font-bold duration-300 relative transition-all group-hover:text-base group-hover:font-normal group-hover:opacity-75'>See {remaining} more...</span>
+                <span className='max-w-xs text-3xl font-bold duration-300 relative transition-all opacity-0 group-hover:opacity-100'>Browse All <br /> Projects</span>
+                <div className="rounded-full opacity-0 text-3xl p-2 bg-white relative duration-300 group-hover:opacity-100 scale-95 group-hover:scale-100 hover:!scale-105 active:!scale-95 mt-auto ml-auto text-blue-600 group-hover:-rotate-45">
+                  <BiChevronRight />
                 </div>
-              </div>
-              <div className='max-w-screen-lg layout'>
-                <Swiper
-
-                  navigation={{
-                    prevEl: projectsPrev.current,
-                    nextEl: projectsNext.current,
-                  }}
-                  onBeforeInit={(swiper) => {
-                    //@ts-expect-error
-                    swiper.params.navigation.prevEl = projectsPrev.current;
-                    //@ts-expect-error
-                    swiper.params.navigation.nextEl = projectsNext.current;
-                  }}
-                  spaceBetween={40}
-                  slidesPerView={'auto'}
-                  centeredSlides={true}
-                  className='mt-8 w-full !overflow-visible'
-                  onSlideChange={(swiper) => setSelectedSlide(swiper.activeIndex)}
-                  onSwiper={(swiper) => console.log(swiper)}
-                >
-
-                  {projects.map(({ title, id, icon, liveSite, image, repo }, index) => (
-
-                    <SwiperSlide key={`project_${id}`}
-                      className={`cursor-grab overflow-visible transition duration-300 w-full ${selectedSlide !== index && 'pointer-events-none'}`}
-                    >
-                      <ProjectWindow
-                        repo={repo}
-                        className={`w-full rounded-b-none ${selectedSlide !== index ? 'opacity-75 translate-y-4' : '-translate-y-0'}`}
-                        title={title}
-                        icon={<img src={icon.url} className='w-4 h-4' />}
-                        url={liveSite}
-                        img={image.url}
-                      />
-                    </SwiperSlide>
-                  ))}
+              </a>
+            </Link>
 
 
-
-
-                </Swiper>
-              </div>
-            </div>
-          </section>
+          </div>
         </FadeIn>
 
         <section className='pt-16 dark:bg-gray-900/50 bg-blue-50 sm:pt-32 sm:pb-16'>
@@ -441,11 +385,12 @@ export default function HomePage({ projects, testimonials }: props) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const projects = await datoCmsApi.getHomeProjects()
+  const allprojects = await datoCmsApi.getAllProjects()
   const testimonials = await datoCmsApi.getAllTestimonials()
-
+  const remaining = allprojects.length - 4;
   return {
     props: {
-      projects, testimonials
+      projects, testimonials, remaining
     },
     revalidate: 10
 
