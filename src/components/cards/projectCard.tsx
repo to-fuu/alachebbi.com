@@ -1,12 +1,11 @@
 
 import Project from '@/cms/types/Project';
-import { mapTechs } from '@/pages/projects';
 import React from "react";
 import { HiEye } from 'react-icons/hi';
 import { RiGithubFill } from 'react-icons/ri';
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-  const { title, liveSite, repo, image, colorTopLeft, description } = project
+  const { title, liveSite, repo, image, colorTopLeft, description, subtitle } = project
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (<div
@@ -15,7 +14,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       style={{ backgroundColor: colorTopLeft.hex }}
       className="rounded-2xl overflow-clip absolute inset-0 p-12 [backface-visibility:hidden] text-white flex flex-col duration-500">
       <img src={image.url} alt="" className='rotate-12 scale-125 group-hover:scale-[1.4] duration-300 blur-sm group-hover:blur-none w-full absolute opacity-5 rounded-2xl inset-0 h-full object-cover object-top' />
-      <div className=' max-w-xs opacity-75 mb-2 relative duration-300'>Web Development</div>
+      <div className=' max-w-xs opacity-75 mb-2 relative duration-300'>{subtitle}</div>
       <div className=' max-w-xs  text-2xl xl:text-3xl font-bold relative duration-300'>{title}</div>
       <p className='mt-2 group-hover:opacity-75 sm:opacity-0 duration-300 xl:block sm:hidden'>{description}</p>
       <div className="flex gap-2  mt-auto ml-auto">

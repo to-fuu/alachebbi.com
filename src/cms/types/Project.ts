@@ -7,6 +7,7 @@ type Project = {
   title: string;
   id: string;
   wip: boolean;
+  subtitle: string;
   icon: Image;
   image: Image;
   accentColor: Color;

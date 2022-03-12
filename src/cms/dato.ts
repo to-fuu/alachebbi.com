@@ -54,6 +54,7 @@ export async function getAllProjects(): Promise<Project[]> {
       repo
       title
       year
+      subtitle
       techs
       wip
       id
@@ -91,6 +92,7 @@ export async function getHomeProjects(): Promise<Project[]> {
     year
     techs
     wip
+    subtitle
     id
     icon {
       url

@@ -29,7 +29,7 @@ export default function Projects({ projects }: props) {
 
         </section>
 
-        {projects.map(({ title, description, id, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs }) => (
+        {projects.map(({ title, description, id, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
             <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className="mb-10">
                 <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorTopLeft?.hex})` }}>
                     {/* <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' /> */}
@@ -37,7 +37,8 @@ export default function Projects({ projects }: props) {
                         {wip && <div className="bg-white text-black w-fit px-2 rounded-md mb-2">
                             WORK IN PROGRESS
                         </div>}
-                        <h2 className='text-gray-200'>
+                        <div className='opacity-75 text-white text-lg mb-2'>{subtitle}</div>
+                        <h2 className='text-gray-200 max-w-xl'>
                             <div className=''>{title}</div>
                         </h2>
                         <p className="text-xl mt-8 max-w-md text-white/80">{description}</p>

@@ -13,10 +13,8 @@ import Link from 'next/link';
 import * as React from 'react';
 import { BiChevronRight, BiDevices } from 'react-icons/bi';
 import {
-  HiChevronDoubleDown,
-  HiChevronDoubleRight, HiOutlineDocumentText
+  HiChevronDoubleDown, HiOutlineDocumentText
 } from 'react-icons/hi';
-import { ImLinkedin } from 'react-icons/im';
 import { IoLogoGameControllerA } from 'react-icons/io';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -47,7 +45,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
     <Layout headerDark={false}>
       <Seo />
       <main className='dark:bg-black bg-white max-w-[100vw] overflow-x-clip '>
-        <section className='relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
+        <section className='overflow-clip relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
           <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
           <div className='absolute inset-x-0 top-0 bottom-0 hidden bg-repeat dark:top-1/2 bg-gradient-to-b from-transparent to-white dark:to-black dark:block' />
           <div className='relative flex flex-col w-full max-w-screen-xl px-10 pt-24 text-left layout sm:pt-40 xl:px-0'>
@@ -94,7 +92,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           </div>
 
           <div className='relative flex w-full mt-20 '>
-            <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px]">
+            <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px] overflow-clip">
               <FadeIn className='w-full relative ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
                 <CodeWindow
                   className='w-full '
@@ -111,7 +109,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           ref={s1Ref}
         >
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-            <h2 className='max-w-xl text-5xl text-gray-600 dark:text-gray-200'>
+            <h2 className='max-w-xl text-5xl text-gray-600 dark:text-gray-200 mt-12 '>
               Passionate Frontend and <br /> Game developer
             </h2>
           </FadeIn>
@@ -249,7 +247,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
               <ProjectCard project={p} key={p.title} />
             ))}
             <Link href='/projects'>
-              <a className="flex relative overflow-clip flex-col group items-start justify-start w-full h-full p-12 text-gray-900 duration-300 hover:-translate-y-2 rounded-2xl dark:text-gray-200 ">
+              <a className="flex relative overflow-clip flex-col group items-start justify-start w-full h-full p-12 text-gray-900 duration-300 hover:-translate-y-2 rounded-2xl dark:text-gray-200 hover:text-gray-200">
                 <div className="absolute scale-1 rounded-full w-12 bottom-12 right-12 h-12  scale-0  bg-blue-500 group-hover:scale-[25] opacity-0 duration-300  group-hover:opacity-100"></div>
                 <span className='max-w-xs text-3xl font-bold duration-300 relative transition-all group-hover:text-base group-hover:font-normal group-hover:opacity-75'>See {remaining} more...</span>
                 <span className='max-w-xs text-3xl font-bold duration-300 relative transition-all opacity-0 group-hover:opacity-100'>Browse All <br /> Projects</span>
