@@ -103,7 +103,7 @@ export const CodeWindow = React.forwardRef(
             <VscSearch className='hover:text-gray-200 duration-150' />
             <div className="relative">
               <VscGitMerge className='hover:text-gray-200 duration-150' />
-              <div className="absolute grid items-center w-5 h-5 text-xs text-black bg-teal-500 rounded-full left-3 top-2">4</div>
+              <div className="absolute grid items-center w-5 h-5 text-xs text-white bg-rose-600 rounded-full left-3 top-2">4</div>
             </div>
             <VscDebugAlt className='hover:text-gray-200 duration-150' />
             <VscExtensions className='hover:text-gray-200 duration-150' />

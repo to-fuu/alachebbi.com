@@ -35,7 +35,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
         </Head>
-        <body className='w-screen overflow-x-clip selection:bg-gray-900 selection:text-white'>
+        <body className='w-screen overflow-x-clip selection:bg-gray-900 selection:text-white bg-black'>
           <Main />
           <NextScript />
         </body>

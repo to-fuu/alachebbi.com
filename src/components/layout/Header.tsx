@@ -5,44 +5,9 @@ import { ImGithub, ImLinkedin } from 'react-icons/im';
 import { IoMdCloudyNight, IoMdMoon, IoMdSunny } from 'react-icons/io';
 
 
-const isDark = (): boolean =>
-  (localStorage && !localStorage.alatheme ? true : localStorage.alatheme === 'dark')
-
-const getThemeString = (isDark: boolean): string => (isDark ? 'dark' : 'light')
-
-// const links = [
-//   { href: '#about', label: 'About me', topScroll: 800, bottomScroll: 1600 },
-//   { href: '#projects', label: 'Projects', topScroll: 1600, bottomScroll: 2800 },
-// ];
 
 export default function Header({ headerDark, hideNav }: { headerDark?: boolean, hideNav?: boolean }) {
 
-  const [isDarkMode, setDarkMode] = React.useState(false)
-
-  const applyTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
-
-  const toggleMode = (): void => {
-    localStorage.alatheme = getThemeString(!isDarkMode)
-    setDarkMode(!isDarkMode)
-  }
-
-  React.useEffect(() => {
-    console.log(localStorage.alatheme);
-    console.log(isDark());
-
-    setDarkMode(isDark())
-
-  }, [])
-
-  React.useEffect(() => {
-    applyTheme()
-  }, [isDarkMode])
 
   const scroll = useScroll()
 
@@ -62,11 +27,7 @@ export default function Header({ headerDark, hideNav }: { headerDark?: boolean, 
             <div className="hidden sm:block">Get in touch</div>
             <ImLinkedin />
           </a>
-          <button onClick={() => {
-            toggleMode()
-          }} className={`rounded-full  text-white p-2 text-xl hover:bg-blue-600/80 duration-300 hover:text-white`}>
-            {isDarkMode ? <IoMdMoon /> : <IoMdSunny />}
-          </button>
+
 
 
         </nav>

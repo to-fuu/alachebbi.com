@@ -4,86 +4,96 @@ import FadeIn from "@/components/Fadein";
 import Layout from "@/components/layout/Layout";
 import Seo from "@/components/Seo";
 import Tooltip from '@/components/tooltip';
-import { ProjectWindow } from "@/components/windows/projectwindow";
 import { GetStaticProps } from "next";
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { ImGithub } from "react-icons/im";
-import { SiAndroidstudio, SiDatocms, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiWindows, SiWordpress } from "react-icons/si";
+import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiWindows, SiWordpress } from "react-icons/si";
 
 interface props {
     projects: Project[]
 }
 
-export default function Projects({ projects }: props) {
-    return <Layout hideNav headerDark>
+const Projects: React.FC<props> = ({ projects }) => {
+    return <Layout hideNav  >
         <Seo templateTitle="Projects 🏷️" />
+        <div className={`bg-black absolute inset-0 h-screen  before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen
+        after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-black after:absolute after:w-full after:h-screen`}></div>
 
-        <section
-            className='layout relative mb-20 flex max-w-screen-lg scroll-mt-20 flex-col items-center pt-40 pb-12 text-center dark:bg-black'
-        >
-            <FadeIn bounce={0} duration={0.5} distance={40} >
-                <h1 className='text-gray-600 dark:text-gray-200'>
-                    Projects
-                </h1>
-            </FadeIn>
+        <section className='overflow-clip pt-40 pb-20 relative bg-gradient-to-br  text-gray-200 selection:bg-white selection:text-gray-900  '>
+            <div className='relative flex flex-col w-full max-w-screen-xl px-10 text-left layout  xl:px-0'>
+                <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
+                    <h1 className='group flex flex-col leading-[1.1] justify-center items-center mt-24 '>
+                        Projects
+                    </h1>
+                </FadeIn>
 
+                {/* <div className="grid grid-cols-5 layout max-w-2xl mt-24 text-center gap-8">
+                    <button className="rounded-xl bg-white/10 py-2 hover:bg-white/20">All</button>
+                    <button className="rounded-xl bg-white/10 py-2 hover:bg-blue-500/20">Web</button>
+                    <button className="rounded-xl bg-white/10 py-2">Game</button>
+                    <button className="rounded-xl bg-white/10 py-2">Desktop</button>
+                    <button className="rounded-xl bg-white/10 py-2">Mobile</button>
+                </div> */}
+            </div>
         </section>
 
-        {projects.map(({ title, description, id, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
-            <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className="mb-10">
-                <section className='transition-all duration-300 px-4 md:px-0 overflow-clip max-w-screen-xl mx-auto relative xl:rounded-3xl pt-10 md:pt-20 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay' id='projects' style={{ backgroundImage: `linear-gradient(to bottom right, ${colorTopLeft?.hex}, ${colorTopLeft?.hex})` }}>
-                    {/* <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' /> */}
-                    <div className='layout relative max-w-screen-lg'>
-                        {wip && <div className="bg-white text-black w-fit px-2 rounded-md mb-2">
-                            WORK IN PROGRESS
-                        </div>}
-                        <div className='opacity-75 text-white text-lg mb-2'>{subtitle}</div>
-                        <h2 className='text-gray-200 max-w-xl'>
-                            <div className=''>{title}</div>
-                        </h2>
-                        <p className="text-xl mt-8 max-w-md text-white/80">{description}</p>
-                        <div className='mt-8 flex w-full items-center gap-4 text-3xl text-gray-200'>
-                            {mapTechs(techs)}
+        <div className="max-w-screen-lg gap-10 mx-auto">
+            {projects.map(({ title, description, id, dark, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
+                <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className={`mb-10 ${dark && 'dark'}`}>
+                    <section className='relative h-full max-w-screen-xl gap-12 px-12 pt-10 mx-auto transition-all duration-300 overflow-clip md:flex xl:rounded-3xl md:pt-10 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay ' id='projects' style={{ backgroundColor: dark ? '#F9FAFB' : colorTopLeft.hex }}>
+                        <div className='relative flex-1 max-w-screen-lg mb-12 layout'>
+                            {wip && <div className="px-2 mb-2 text-black bg-white dark:bg-black dark:text-white rounded-md w-fit">
+                                WORK IN PROGRESS
+                            </div>}
+                            <div className='mb-2 text-lg text-white opacity-75 dark:text-black'>{subtitle}</div>
+                            <h2 className='max-w-xl text-4xl text-gray-200 dark:text-gray-700'>
+                                {title}
+                            </h2>
+                            <p className="max-w-md mt-8 text-lg text-white/80 dark:text-black/80">{description}</p>
+                            <div className='flex items-center w-full gap-4 mt-8 text-2xl text-gray-200 dark:text-gray-700'>
+                                {mapTechs(techs)}
+                            </div>
+                            <div className='flex flex-wrap items-center justify-center gap-4 mt-12'>
+                                {liveSite ?
+                                    <a href={liveSite} target={'_blank'} rel='noreferrer noopener' className='relative inline-flex items-center justify-center flex-1 h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow group active:scale-95 rounded-2xl dark:bg-gray-900 bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50 dark:hover:bg-gray-900/95' style={{ color: dark ? 'white' : accentColor?.hex }}>
+                                        Live Website
+                                        <HiChevronDoubleRight />
+                                    </a>
+                                    :
+                                    wip ? <button disabled className='items-center flex-1 h-16 text-xl rounded-2xl bg-gray-50/50 px-7 font-' style={{ color: accentColor?.hex }}>
+                                        Coming Soon
+                                    </button>
+                                        : <></>
+                                }
+                                {repo && <a href={repo} className='relative inline-flex items-center justify-center flex-1 h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow group rounded-2xl bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-900/95' style={{ color: dark ? 'white' : accentColor?.hex }}>
+                                    View Code
+                                    <ImGithub />
+                                </a>}
+                            </div>
                         </div>
-                        <div className='mt-12 flex items-center '>
-                            {liveSite ?
-                                <a href={liveSite} target={'_blank'} rel='noreferrer noopener' className='group  active:scale-95 mr-4 relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-gray-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-gray-50' style={{ color: accentColor?.hex }}>
-                                    Live Website
-                                    <HiChevronDoubleRight />
-                                </a>
-                                :
-                                <button disabled className='h-16 items-center rounded-2xl  bg-gray-50/50  px-7 text-xl font-' style={{ color: accentColor?.hex }}>
-                                    Coming Soon
-                                </button>
-                            }
-
-                            {repo && <a href={repo} className='group relative inline-flex h-16 items-center gap-4 rounded-2xl border-t bg-gray-50/75 px-7 text-xl font-medium shadow transition-all duration-300 hover:gap-6 hover:bg-gray-50' style={{ color: accentColor?.hex }}>
-                                View Code
-                                <ImGithub />
-                            </a>}
+                        <div className='flex-1 h-full max-h-[300px] '>
+                            <img src={image?.url} alt="" className='rounded-t-2xl md:absolute shadow-xl ' />
+                            {/* <ProjectWindow
+                                hideButtons
+                                className={`w-full rounded-b-none`}
+                                title={title}
+                                icon={<img src={icon?.url} alt={title + '_icon'} className="w-5 h-5" />}
+                                url='coffeecupindustries.com'
+                                img={image?.url}
+                            /> */}
                         </div>
-                    </div>
-                    <div className='layout max-w-screen-lg mt-12'>
-                        <ProjectWindow
-                            hideButtons
-                            className={`w-full rounded-b-none`}
-                            title={title}
-                            icon={<img src={icon?.url} alt={title + '_icon'} className="w-5 h-5" />}
-                            url='coffeecupindustries.com'
-                            img={image?.url}
-                        />
-                    </div>
-                </section>
-            </FadeIn>
-        ))}
+                    </section>
+                </FadeIn>
+            ))}
+        </div>
 
         <FadeIn bounce={0} duration={0.5} distance={20} once={false} startScale={1} >
-            <div className='text-center mx-auto text-3xl font-bold mt-32 text-gray-700 dark:text-gray-500 pb-20'>And more coming soon...</div>
+            <div className='pb-20 mx-auto mt-32 text-3xl font-bold text-center text-gray-400'>And many more to come!</div>
         </FadeIn>
 
     </Layout>
 }
-
+export default Projects
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
     const projects = await datoCmsApi.getAllProjects()
@@ -145,6 +155,12 @@ export const mapTechs = (techs: string[]) => {
             </Tooltip>
             case "typescript": return <Tooltip content="Typescript">
                 <SiTypescript />
+            </Tooltip>
+            case ".net": return <Tooltip content="Typescript">
+                <SiDotnet />
+            </Tooltip>
+            case "c#": return <Tooltip content="Typescript">
+                <SiCsharp />
             </Tooltip>
         }
     })
