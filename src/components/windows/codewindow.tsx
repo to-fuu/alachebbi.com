@@ -89,7 +89,7 @@ export const CodeWindow = React.forwardRef(
   ) => {
     return (
       <div
-        className={`layout z-[1] max-h-[500px] sm:max-h-max sm:aspect-video select-none overflow-clip shadow-xl sm:rounded-2xl border-t border-t-white/10 bg-black/80  backdrop-blur-md transition-all duration-300 ${className} relative`}
+        className={`layout z-[1] max-h-[500px] md:max-h-[720px] sm:aspect-video select-none overflow-clip shadow-xl sm:rounded-2xl border-t border-t-white/10 bg-black/80  backdrop-blur-md transition-all duration-300 ${className} relative`}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none"></div>
         <div className='relative flex items-center h-10 px-4'>

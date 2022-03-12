@@ -1,42 +1,28 @@
 import * as datoCmsApi from '@/cms/dato';
 import Project from '@/cms/types/Project';
 import Testimonial from '@/cms/types/Testimonial';
-import { DetailsGroup } from '@/components/DetailsGroup';
 import FadeIn from '@/components/Fadein';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-import Tooltip from '@/components/tooltip';
 import { CodeWindow } from '@/components/windows/codewindow';
-import { HeaderWindow } from '@/components/windows/headerwindow';
 import { ProjectWindow } from '@/components/windows/projectwindow';
+import { useTransform, useViewportScroll } from 'framer-motion';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
+import { BiDevices } from 'react-icons/bi';
 import {
   HiArrowLeft,
   HiArrowRight,
   HiChevronDoubleDown,
   HiChevronDoubleRight, HiOutlineDocumentText
 } from 'react-icons/hi';
-import { BiDevices } from 'react-icons/bi';
-import {
-  SiAlpinedotjs, SiCsharp,
-  SiCss3, SiDatocms, SiGraphql,
-  SiHtml5, SiJavascript, SiMysql,
-  SiNextdotjs,
-  SiReact,
-  SiStrapi,
-  SiTailwindcss,
-  SiTypescript,
-  SiUnity,
-  SiWordpress
-} from 'react-icons/si';
+import { ImLinkedin } from 'react-icons/im';
+import { IoLogoGameControllerA } from 'react-icons/io';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IoLogoGameControllerA } from 'react-icons/io'
-import { ImEarth, ImLinkedin } from 'react-icons/im';
-
+import { motion } from 'framer-motion'
 SwiperCore.use([Navigation])
 
 
@@ -53,6 +39,10 @@ export default function HomePage({ projects, testimonials }: props) {
 
   const projectsPrev = React.useRef<HTMLButtonElement>(null)
   const projectsNext = React.useRef<HTMLButtonElement>(null)
+
+  const { scrollY } = useViewportScroll();
+  const codeY = useTransform(scrollY, [300, 1000], [0, 150]);
+  const codeOpacity = useTransform(scrollY, [500, 900], [1, 0]);
 
   return (
     <Layout headerDark={false}>
@@ -105,18 +95,20 @@ export default function HomePage({ projects, testimonials }: props) {
           </div>
 
           <div className='relative flex w-full mt-20 '>
-            <FadeIn className='w-full ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
-              <CodeWindow
-                className='w-full '
-              />
-            </FadeIn>
+            <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px]">
+              <FadeIn className='w-full ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
+                <CodeWindow
+                  className='w-full '
+                />
+              </FadeIn>
+            </motion.div>
 
 
           </div>
         </section>
 
         <section
-          className='relative flex flex-col max-w-screen-md pt-32 pb-12 layout scroll-mt-20'
+          className='relative flex flex-col max-w-screen-md pt-16 pb-12 layout scroll-mt-20'
           id='about'
           ref={s1Ref}
         >

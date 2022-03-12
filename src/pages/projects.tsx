@@ -6,7 +6,7 @@ import Seo from "@/components/Seo";
 import Tooltip from '@/components/tooltip';
 import { ProjectWindow } from "@/components/windows/projectwindow";
 import { GetStaticProps } from "next";
-import { HiChevronDoubleRight, HiOutlineDuplicate } from "react-icons/hi";
+import { HiChevronDoubleRight } from "react-icons/hi";
 import { ImGithub } from "react-icons/im";
 import { SiAndroidstudio, SiDatocms, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiWindows, SiWordpress } from "react-icons/si";
 
