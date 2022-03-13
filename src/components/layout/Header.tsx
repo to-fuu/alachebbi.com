@@ -6,7 +6,7 @@ import { IoMdCloudyNight, IoMdMoon, IoMdSunny } from 'react-icons/io';
 
 
 
-export default function Header({ headerDark, hideNav }: { headerDark?: boolean, hideNav?: boolean }) {
+export default function Header({ headerDark }: { headerDark?: boolean }) {
 
 
   const scroll = useScroll()

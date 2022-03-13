@@ -32,11 +32,6 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
   const discRef = React.useRef<HTMLButtonElement>(null);
   const cvRef = React.useRef<HTMLAnchorElement>(null);
 
-  const [selectedSlide, setSelectedSlide] = React.useState(0);
-
-  const projectsPrev = React.useRef<HTMLButtonElement>(null)
-  const projectsNext = React.useRef<HTMLButtonElement>(null)
-
   const { scrollY } = useViewportScroll();
   const codeY = useTransform(scrollY, [300, 1000], [0, 150]);
   const codeOpacity = useTransform(scrollY, [500, 900], [1, 0]);
@@ -259,7 +254,6 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                 <Swiper
                   slidesPerView={'auto'}
                   className=' w-full h-[320px]'
-                  onSlideChange={(swiper) => setSelectedSlide(swiper.activeIndex)}
                 >
 
                   {testimonials.map(({ initials, name, review, thumb, title }) => (<SwiperSlide

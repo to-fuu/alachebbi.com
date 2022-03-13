@@ -14,7 +14,7 @@ interface props {
 }
 
 const Projects: React.FC<props> = ({ projects }) => {
-    return <Layout hideNav  >
+    return <Layout >
         <Seo templateTitle="Projects 🏷️" />
         <div className={`bg-black absolute inset-0 h-screen  before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen
         after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-black after:absolute after:w-full after:h-screen`}></div>

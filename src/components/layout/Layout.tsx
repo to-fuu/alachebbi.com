@@ -6,7 +6,7 @@ import Header from './Header';
 export default function Layout({ children, headerDark, hideNav }: { children: React.ReactNode, headerDark?: boolean, hideNav?: boolean }) {
 
   return <>
-    {!hideNav && <Header headerDark={headerDark} hideNav={hideNav} />}
+    {!hideNav && <Header headerDark={headerDark} />}
     <div className="bg-black relative">
       <AnimatePresence exitBeforeEnter>
         <motion.div exit={{ y: 80, opacity: 0 }} initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ bounce: 0, duration: 0.5 }} >{children}</motion.div>
