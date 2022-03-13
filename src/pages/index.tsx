@@ -52,7 +52,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
             <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
               <h1 className='group mt-4 flex flex-col leading-[1.1] justify-center items-center '>
                 <div className='mb-4 text-3xl font-bold text-center transition duration-300 scale-90 text-opacity-60'>
-                  <img src="https://brandbox.tn/wp-content/uploads/2021/09/ala-1.jpg" className='inline w-12 h-12 rounded-full mr-4' alt="" />
+                  <img src="https://brandbox.tn/wp-content/uploads/2021/09/ala-1.jpg" className='inline w-12 h-12 mr-4 rounded-full' alt="" />
                   Howdy 👋 I&apos;m Ala,
                 </div>
                 <div className='text-center sm:max-w-screen-lg sm:px-20'>
@@ -68,7 +68,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                     s1Ref.current!.scrollIntoView({ behavior: 'smooth' });
                   }}
                   ref={discRef}
-                  className='relative inline-flex items-center h-14 gap-4 text-xl font-medium text-rose-100 transition duration-300 hover:shadow-xl hover:shadow-rose-600/20 active:scale-95  group rounded-2xl bg-rose-500 px-7 hover:opacity-80'
+                  className='relative inline-flex items-center gap-4 text-xl font-medium transition duration-300 h-14 text-rose-100 hover:shadow-xl hover:shadow-rose-600/20 active:scale-95 group rounded-2xl bg-rose-500 px-7 hover:opacity-80'
                 >
                   Discover
                   <HiChevronDoubleDown className='transition duration-300 group-hover:translate-y-1' />
@@ -83,7 +83,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                     }}
 
                     ref={cvRef}
-                    className='relative inline-flex items-center h-14 gap-4 text-xl font-medium transition duration-300 bg-white bg-opacity-80  select-none active:scale-95 whitespace-nowrap rounded-2xl px-7  hover:bg-opacity-100 hover:text-rose-600/80 text-rose-600/70 hover:shadow-xl hover:shadow-rose-600/20'
+                    className='relative inline-flex items-center gap-4 text-xl font-medium transition duration-300 bg-white select-none h-14 bg-opacity-80 active:scale-95 whitespace-nowrap rounded-2xl px-7 hover:bg-opacity-100 hover:text-rose-600/80 text-rose-600/70 hover:shadow-xl hover:shadow-rose-600/20'
                   >
                     See Resume
                     <HiOutlineDocumentText />
@@ -164,7 +164,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
               <ProjectCard project={p} key={p.title} />
             ))}
             <Link href='/projects'>
-              <a className="relative flex flex-col items-start justify-start active:scale-95 active:opacity-75 hover:shadow-xl hover:shadow-red-600/20 w-full h-full p-12 text-gray-200 duration-300 overflow-clip group hover:-translate-y-2 rounded-2xl hover:text-gray-200">
+              <a className="relative flex flex-col items-start justify-start w-full h-full p-12 text-gray-200 duration-300 active:scale-95 active:opacity-75 hover:shadow-xl hover:shadow-red-600/20 overflow-clip group hover:-translate-y-2 rounded-2xl hover:text-gray-200">
                 <div className="absolute scale-1 rounded-full w-12 bottom-12 right-12 h-12  scale-0  bg-rose-600 group-hover:scale-[25] opacity-0 duration-300  group-hover:opacity-100"></div>
                 <span className='relative max-w-xs text-3xl font-bold transition-all duration-300 group-hover:text-base group-hover:font-normal group-hover:opacity-75'>See {remaining} more...</span>
                 <span className='relative max-w-xs text-3xl font-bold transition-all duration-300 opacity-0 group-hover:opacity-100'>Browse All <br /> Projects</span>
@@ -233,16 +233,14 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
               delay={0.1}
               className="mx-auto mt-16 w-fit"
             >
-              <a
-
-                href='/cv-alachebbi.pdf'
-                target={'_blank'}
-                ref={cvRef}
-                className='relative inline-flex items-center h-14 gap-4 text-xl font-medium text-white transition-all duration-300 bg-rose-600 hover:shadow-xl hover:text-opacity-75 active:scale-95 active:shadow-none active:text-opacity-50 hover:shadow-rose-600/40 rounded-2xl px-7 hover:bg-rose-500'
-              >
-                Get Full Resume
-                <HiOutlineDocumentText />
-              </a>
+              <Link href={'/resume'}>
+                <a
+                  className='relative inline-flex items-center gap-4 text-xl font-medium text-white transition-all duration-300 h-14 bg-rose-600 hover:shadow-xl hover:text-opacity-75 active:scale-95 active:shadow-none active:text-opacity-50 hover:shadow-rose-600/30 rounded-2xl px-7 hover:bg-rose-500'
+                >
+                  See Full Resume
+                  <HiOutlineDocumentText />
+                </a>
+              </Link>
             </FadeIn>
           </div>
         </section>
