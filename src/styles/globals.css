@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
   * {
     scrollbar-color: #9ca3af #d1d5db;
     scrollbar-width: thin;

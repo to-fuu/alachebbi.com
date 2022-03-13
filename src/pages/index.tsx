@@ -73,21 +73,22 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                   Discover
                   <HiChevronDoubleDown className='transition duration-300 group-hover:translate-y-1' />
                 </button>
-                <a
-                  onMouseEnter={() => {
-                    discRef.current!.classList.add('opacity-50');
-                  }}
-                  onMouseLeave={() => {
-                    discRef.current!.classList.remove('opacity-50');
-                  }}
-                  href='/cv-alachebbi.pdf'
-                  target={'_blank'}
-                  ref={cvRef}
-                  className='relative inline-flex items-center h-14 gap-4 text-xl font-medium transition duration-300 bg-white bg-opacity-80  select-none active:scale-95 whitespace-nowrap rounded-2xl px-7  hover:bg-opacity-100 hover:text-rose-600/80 text-rose-600/70 hover:shadow-xl hover:shadow-rose-600/20'
-                >
-                  Get Resume
-                  <HiOutlineDocumentText />
-                </a>
+                <Link href='/resume'>
+                  <a
+                    onMouseEnter={() => {
+                      discRef.current!.classList.add('opacity-50');
+                    }}
+                    onMouseLeave={() => {
+                      discRef.current!.classList.remove('opacity-50');
+                    }}
+
+                    ref={cvRef}
+                    className='relative inline-flex items-center h-14 gap-4 text-xl font-medium transition duration-300 bg-white bg-opacity-80  select-none active:scale-95 whitespace-nowrap rounded-2xl px-7  hover:bg-opacity-100 hover:text-rose-600/80 text-rose-600/70 hover:shadow-xl hover:shadow-rose-600/20'
+                  >
+                    See Resume
+                    <HiOutlineDocumentText />
+                  </a>
+                </Link>
               </div>
             </FadeIn>
           </div>

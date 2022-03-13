@@ -23,6 +23,7 @@
     "@uiw/react-md-editor": "^3.9.5",
     "clsx": "^1.1.1",
     "framer-motion": "^6.2.6",
+    "markdown-to-jsx": "^7.1.7",
     "next": "^12.0.10",
     "next-remove-imports": "^1.0.6",
     "prism-react-renderer": "^1.3.1",
@@ -32,10 +33,8 @@
     "react-intersection-observer": "^8.33.1",
     "react-markdown": "^8.0.0",
     "react-md-editor": "^0.2.2",
-    "react-spring": "^9.4.4",
     "swiper": "^8.0.6",
-    "tailwind-merge": "^1.2.0",
-    "use-3d-effect": "^1.1.0"
+    "tailwind-merge": "^1.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",

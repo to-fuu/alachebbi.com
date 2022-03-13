@@ -7,8 +7,8 @@ import Tooltip from '@/components/tooltip';
 import { GetStaticProps } from "next";
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { ImGithub } from "react-icons/im";
-import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiWindows, SiWordpress } from "react-icons/si";
-
+import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiJava, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiUnity, SiWindows, SiWordpress } from "react-icons/si";
+import { FaElementor } from 'react-icons/fa';
 interface props {
     projects: Project[]
 }
@@ -71,8 +71,8 @@ const Projects: React.FC<props> = ({ projects }) => {
                                 </a>}
                             </div>
                         </div>
-                        <div className='flex-1 h-full max-h-[300px] '>
-                            <img src={image?.url} alt="" className='rounded-t-2xl md:absolute shadow-xl ' />
+                        <div className='flex-1 h-full max-h-[300px] flex'>
+                            <img src={image?.url} alt="" className='rounded-t-2xl md:absolute shadow-xl object-cover mt-auto' />
                             {/* <ProjectWindow
                                 hideButtons
                                 className={`w-full rounded-b-none`}
@@ -156,11 +156,20 @@ export const mapTechs = (techs: string[]) => {
             case "typescript": return <Tooltip content="Typescript">
                 <SiTypescript />
             </Tooltip>
-            case ".net": return <Tooltip content="Typescript">
+            case ".net": return <Tooltip content=".NET">
                 <SiDotnet />
             </Tooltip>
-            case "c#": return <Tooltip content="Typescript">
+            case "c#": return <Tooltip content="C#">
                 <SiCsharp />
+            </Tooltip>
+            case "unity": return <Tooltip content="Unity3D">
+                <SiUnity />
+            </Tooltip>
+            case "elementor": return <Tooltip content="Elementor">
+                <FaElementor />
+            </Tooltip>
+            case "java": return <Tooltip content="Java">
+                <SiJava />
             </Tooltip>
         }
     })

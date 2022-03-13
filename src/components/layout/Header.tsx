@@ -12,7 +12,7 @@ export default function Header({ headerDark, hideNav }: { headerDark?: boolean, 
   const scroll = useScroll()
 
   return (
-    <header className={`px-4 sm:px-0 fixed w-full top-0 z-50 transition-all duration-300 border-t ${headerDark ? 'bg-gray-900/80' : ''} border-transparent ${scroll > 200 ? 'bg-gray-900/80 dark:bg-gray-900/50 backdrop-blur-md border-t-gray-400' : ''}`}>
+    <header className={`print:hidden px-4 sm:px-0 fixed w-full top-0 z-50 transition-all duration-300 border-t ${headerDark ? 'bg-gray-900/80' : ''} border-transparent ${scroll > 200 ? 'bg-gray-900/80 dark:bg-gray-900/50 backdrop-blur-md border-t-gray-400' : ''}`}>
       <div className={`layout flex  items-center justify-between transition-all duration-500 ${scroll > 200 ? 'h-20' : 'h-24'}`}>
         <Link href={'/'} passHref>
           <a className={`font-bold text-xl text-gray-300  ${scroll > 200 ? '!text-gray-300 ' : ''} duration-300`}>

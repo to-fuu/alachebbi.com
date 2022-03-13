@@ -15,6 +15,7 @@
  */
 
 import Project from './types/Project';
+import Resume from './types/Resume';
 
 const API_URL = 'https://graphql.datocms.com/';
 const API_TOKEN = process.env.DATOCMS_READ_ONLY_API_TOKEN;
@@ -48,7 +49,7 @@ async function fetchCmsAPI(
 export async function getAllProjects(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
    {
-    allProjects(orderBy: [wip_ASC,order_ASC]) {
+    allProjects {
       description
       liveSite
       repo
@@ -85,7 +86,7 @@ export async function getAllProjects(): Promise<Project[]> {
 export async function getHomeProjects(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
  {
-  allProjects(filter: {featured: {eq: "true"}},orderBy: [wip_ASC,order_ASC], first: "5") {
+  allProjects(first: "5") {
     description
     liveSite
     repo
@@ -135,4 +136,40 @@ export async function getAllTestimonials(): Promise<Project[]> {
    `);
 
   return data.allTestimonials;
+}
+
+export async function getResume(): Promise<Resume> {
+  const data = await fetchCmsAPI(`
+  query Resume {
+    allExperiences {
+      title
+      subtitle
+      year
+      content {
+        content
+        extra
+      }
+    }
+    allEducations {
+      title
+      subtitle
+      twoColumn
+      hideHeader
+      content {
+        content
+        extra
+      }
+    }
+    resume {
+      excerpt
+    }
+  }  
+   `);
+
+  const resume: Resume = {
+    experiences: data.allExperiences,
+    educations: data.allEducations,
+    excerpt: data.resume.excerpt,
+  };
+  return resume;
 }
