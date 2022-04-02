@@ -13,11 +13,11 @@ export default function Layout({ children, headerDark, hideNav }: { children: Re
       </AnimatePresence>
     </div>
 
-    <div className="fixed w-full bottom-0 px-10 pb-4 z-[100] selection:!bg-white selection:text-blue-600 print:hidden">
+    {/* <div className="fixed w-full bottom-0 px-10 pb-4 z-[100] selection:!bg-white selection:text-blue-600 print:hidden">
       <div className="w-full  bg-rose-600 py-3 text-white font-medium rounded-lg text-center shadow-lg shadow-rose-800/40 px-4">
         Thank you for visiting. Please keep in mind this website is still under development.
       </div>
-    </div>
+    </div> */}
 
     <Footer />
   </>;

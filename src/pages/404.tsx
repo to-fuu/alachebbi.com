@@ -12,10 +12,10 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
 
       <main>
-        <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
+        <section className='bg-black'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-white'>
 
-            <h1 className='mt-8 text-4xl md:text-6xl text-gray-800'>Nothing here to l⊙﹏⊙k at </h1>
+            <h1 className='mt-8 text-4xl md:text-6xl text-gray-200'>Nothing here to l⊙﹏⊙k at </h1>
 
 
             <FadeIn
@@ -28,7 +28,7 @@ export default function NotFoundPage() {
             >
               <Link href='/'>
                 <a
-                  className='relative inline-flex items-center h-16 gap-4 text-xl font-medium text-white transition-all duration-300 bg-blue-600 border-t shadow rounded-2xl border-t-blue-400 px-7 opacity-80 hover:opacity-100' >
+                  className='relative inline-flex items-center gap-4 text-xl font-medium transition duration-300 h-14 text-rose-100 hover:shadow-xl hover:shadow-rose-600/20 active:scale-95 group rounded-2xl bg-rose-500 px-7 hover:opacity-80'>
                   Show me the way
                   <HiArrowNarrowLeft />
                 </a>

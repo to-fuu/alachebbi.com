@@ -39,7 +39,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
   return (
     <Layout headerDark={false}>
       <Seo />
-      <main className=' max-w-[100vw] overflow-x-clip '>
+      <main className='max-w-[100vw] overflow-x-clip '>
         <section className='overflow-clip relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
           <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
           <div className='absolute inset-x-0 bottom-0 bg-repeat top-1/2 bg-gradient-to-b from-transparent to-black' />
