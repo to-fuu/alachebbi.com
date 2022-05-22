@@ -190,13 +190,18 @@ export async function getHomeProjects(): Promise<Project[]> {
 export async function getAllTestimonials(): Promise<Project[]> {
   const data = await fetchCmsAPI(`
    {
-    allTestimonials(orderBy: _createdAt_ASC) {
+    allTestimonials {
       review
       name
       title
       initials
       thumb {
         url
+        webp: url(imgixParams: {fm: webp, q: 100})
+        blurUpThumb
+        width
+        height
+        alt
       }
     }
   }

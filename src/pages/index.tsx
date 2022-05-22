@@ -262,9 +262,9 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                       {review}
                     </p>
                     <div className="flex items-center mt-auto">
-                      {thumb ? <Image width={48} height={48} src={thumb.url} className='mr-4 rounded-full ' objectFit={'cover'} alt={name} />
+                      {thumb ? <Image width={48} height={48} src={thumb.url} placeholder='blur' blurDataURL={thumb.blurUpThumb} className='mr-4 rounded-full ' objectFit={'cover'} alt={name} />
                         :
-                        <div className='grid w-12 h-12 mr-4 text-xl font-black text-gray-500 bg-gray-200 rounded-full place-items-center' children={'C'} />
+                        <div className='grid w-12 h-12 mr-4 text-xl font-black text-gray-500 bg-gray-200 rounded-full place-items-center' children={initials} />
                       }
                       <div className="ml-8">
                         <div className="flex flex-col text-lg">
