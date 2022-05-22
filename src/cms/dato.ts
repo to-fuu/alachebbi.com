@@ -62,9 +62,19 @@ export async function getAllProjects(): Promise<Project[]> {
       id
       icon {
         url
+      webp: url(imgixParams: {fm: webp, q: 100})
+      blurUpThumb
+      width
+      height
+      alt
       }
       image {
         url
+      webp: url(imgixParams: {fm: webp, q: 100})
+      blurUpThumb
+      width
+      height
+      alt
       }
       accentColor {
         hex
@@ -74,6 +84,30 @@ export async function getAllProjects(): Promise<Project[]> {
       }
       colorTopLeft {
         hex
+      }
+      projectLinks{
+        __typename
+        ... on PlayStoreButtonRecord{
+          id
+          url
+          comingSoon
+        }
+        ... on AppStoreButtonRecord{
+          id
+          url
+          comingSoon
+        }
+        ... on GithubButtonRecord{
+          id
+          url
+          comingSoon
+          private
+        }
+        ... on VisitButtonRecord{
+          id
+          url
+          comingSoon
+        }
       }
     }
   }
@@ -99,9 +133,19 @@ export async function getHomeProjects(): Promise<Project[]> {
     id
     icon {
       url
+      webp: url(imgixParams: {fm: webp, q: 100})
+      blurUpThumb
+      width
+      height
+      alt
     }
     image {
       url
+      webp: url(imgixParams: {fm: webp, q: 100})
+      blurUpThumb
+      width
+      height
+      alt
     }
     colorBottomRight {
       hex
@@ -111,6 +155,30 @@ export async function getHomeProjects(): Promise<Project[]> {
     }
     accentColor {
       hex
+    }
+    projectLinks{
+      __typename
+      ... on PlayStoreButtonRecord{
+        id
+        url
+        comingSoon
+      }
+      ... on AppStoreButtonRecord{
+        id
+        url
+        comingSoon
+      }
+      ... on GithubButtonRecord{
+        id
+        url
+        comingSoon
+        private
+      }
+      ... on VisitButtonRecord{
+        id
+        url
+        comingSoon
+      }
     }
   }
  }

@@ -4,16 +4,22 @@ import FadeIn from "@/components/Fadein";
 import Layout from "@/components/layout/Layout";
 import Seo from "@/components/Seo";
 import Tooltip from '@/components/tooltip';
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { ImGithub } from "react-icons/im";
 import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiJava, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiUnity, SiWindows, SiWordpress } from "react-icons/si";
 import { FaElementor } from 'react-icons/fa';
+import { PlayStoreButton } from '@/components/buttons/PlayStoreButton';
+import { AppStoreButton } from '@/components/buttons/AppStoreButton';
+import { GithubButton } from '@/components/buttons/GithubButton';
+import { LiveSiteButton } from '@/components/buttons/LiveSiteButton';
+import { YoutubeButton } from '@/components/buttons/YoutubeButton';
+import Image from 'next/image';
 interface props {
     projects: Project[]
 }
 
-const Projects: React.FC<props> = ({ projects }) => {
+const Projects: NextPage<props> = ({ projects }) => {
     return <Layout >
         <Seo templateTitle="Projects 🏷️" />
         <div className={`bg-black absolute inset-0 h-screen  before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen
@@ -38,7 +44,7 @@ const Projects: React.FC<props> = ({ projects }) => {
         </section>
 
         <div className="max-w-screen-lg gap-10 mx-auto">
-            {projects.map(({ title, description, id, dark, icon, liveSite, repo, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
+            {projects.map(({ title, description, id, dark, projectLinks, liveSite, icon, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
                 <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className={`mb-10 ${dark && 'dark'}`}>
                     <section className='relative h-full max-w-screen-xl gap-12 px-12 pt-10 mx-auto transition-all duration-300 overflow-clip md:flex xl:rounded-3xl md:pt-10 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay ' id='projects' style={{ backgroundColor: dark ? '#F9FAFB' : colorTopLeft.hex }}>
                         <div className='relative flex-1 max-w-screen-lg mb-12 layout'>
@@ -54,33 +60,31 @@ const Projects: React.FC<props> = ({ projects }) => {
                                 {mapTechs(techs)}
                             </div>
                             <div className='flex flex-wrap items-center justify-center gap-4 mt-12'>
-                                {liveSite ?
-                                    <a href={liveSite} target={'_blank'} rel='noreferrer noopener' className='relative inline-flex items-center justify-center flex-1 h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow group active:scale-95 rounded-2xl dark:bg-gray-900 bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50 dark:hover:bg-gray-900/95' style={{ color: dark ? 'white' : accentColor?.hex }}>
-                                        Live Website
-                                        <HiChevronDoubleRight />
-                                    </a>
-                                    :
-                                    wip ? <button disabled className='items-center flex-1 h-16 text-xl rounded-2xl bg-gray-50/50 px-7 font-' style={{ color: accentColor?.hex }}>
-                                        Coming Soon
-                                    </button>
-                                        : <></>
+
+
+                                {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }) => {
+                                    console.log(__typename);
+
+                                    switch (__typename) {
+                                        case 'PlayStoreButtonRecord': return <PlayStoreButton url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'AppStoreButtonRecord': return <AppStoreButton url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'GithubButtonRecord': return <GithubButton url={url} comingSoon={comingSoon} private={isPrivate} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'VisitButtonRecord': return <LiveSiteButton url={url} comingSoon={comingSoon} icon={icon?.url} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'YoutubeButtonRecord': return <YoutubeButton url={url} accent={dark ? 'white' : accentColor?.hex} />
+                                    }
+
+                                    return <></>
                                 }
-                                {repo && <a href={repo} className='relative inline-flex items-center justify-center flex-1 h-16 gap-4 text-xl font-medium transition-all duration-300 border-t shadow group rounded-2xl bg-gray-50/75 px-7 hover:gap-6 hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-900/95' style={{ color: dark ? 'white' : accentColor?.hex }}>
-                                    View Code
-                                    <ImGithub />
-                                </a>}
+                                )}
+
+
                             </div>
                         </div>
                         <div className='flex-1 h-full max-h-[300px] flex'>
-                            <img src={image?.url} alt="" className='rounded-t-2xl md:absolute shadow-xl object-cover mt-auto' />
-                            {/* <ProjectWindow
-                                hideButtons
-                                className={`w-full rounded-b-none`}
-                                title={title}
-                                icon={<img src={icon?.url} alt={title + '_icon'} className="w-5 h-5" />}
-                                url='coffeecupindustries.com'
-                                img={image?.url}
-                            /> */}
+                            <div className="rounded-t-2xl md:absolute shadow-xl object-cover mt-auto overflow-hidden w-full h-full ">
+                                <Image src={image?.url} alt={image?.alt} placeholder={'blur'} blurDataURL={image?.blurUpThumb} width={image?.width} height={image?.height} />
+                            </div>
+
                         </div>
                     </section>
                 </FadeIn>

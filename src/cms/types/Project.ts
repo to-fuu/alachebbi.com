@@ -15,6 +15,13 @@ type Project = {
   colorTopLeft: Color;
   colorBottomRight: Color;
   techs: string[];
+  projectLinks: {
+    __typename: string;
+    id: string;
+    url: string;
+    comingSoon: boolean;
+    private: boolean;
+  }[];
 };
 
 export default Project;
