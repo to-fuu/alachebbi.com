@@ -297,8 +297,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       projects, testimonials, remaining
-    },
-    revalidate: 10
-
+    }
   }
 }

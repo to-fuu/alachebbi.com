@@ -63,7 +63,6 @@ const Projects: NextPage<props> = ({ projects }) => {
 
 
                                 {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }) => {
-                                    console.log(__typename);
 
                                     switch (__typename) {
                                         case 'PlayStoreButtonRecord': return <PlayStoreButton url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
@@ -104,8 +103,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
         props: {
             projects
-        },
-        revalidate: 10, // In seconds
+        }
     }
 }
 

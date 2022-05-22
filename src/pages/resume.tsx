@@ -106,13 +106,9 @@ export default function ResumePage({ resume }: { resume: Resume }) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const resume = await datoCmsApi.getResume()
-  console.log(resume);
-
   return {
     props: {
       resume
-    },
-    revalidate: 10
-
+    }
   }
 }
