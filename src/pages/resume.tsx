@@ -21,7 +21,7 @@ export default function ResumePage({ resume }: { resume: Resume }) {
           <Link href={'/'}><a className="text-3xl block print:hidden w-fit hover:bg-rose-500/20 rounded-full p-2 mb-8 text-opacity-50 hover:text-rose-400 duration-300 text-white"> <BiChevronLeft /> </a></Link>
           <div className="flex flex-col-reverse lg:flex-row items-cente justify-between">
             <h2 className="text-5xl print:text-3xl flex items-center ">
-              <img src="https://brandbox.tn/wp-content/uploads/2021/09/ala-1.jpg" className='inline w-12 h-12 print:w-10 print:h-10 rounded-full mr-4' alt="" />
+              <img src="/images/me.jpg" className='inline w-12 h-12 print:w-10 print:h-10 rounded-full mr-4' alt="" />
               Ala CHEBBI <span className="animate-blink text-rose-600 font-normal print:hidden">|</span>
             </h2>
             <button onClick={() => {

@@ -21,7 +21,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 SwiperCore.use([Navigation])
 
-
 interface props {
   projects: Project[]
   testimonials: Testimonial[]
@@ -47,7 +46,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
             <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
               <h1 className='group mt-4 flex flex-col leading-[1.1] justify-center items-center '>
                 <div className='mb-4 text-3xl font-bold text-center transition duration-300 scale-90 text-opacity-60'>
-                  <img src="https://brandbox.tn/wp-content/uploads/2021/09/ala-1.jpg" className='inline w-12 h-12 mr-4 rounded-full' alt="" />
+                  <img src="/images/me.jpg" className='inline w-12 h-12 mr-4 rounded-full' alt="" />
                   Howdy 👋 I&apos;m Ala,
                 </div>
                 <div className='text-center sm:max-w-screen-lg sm:px-20'>
