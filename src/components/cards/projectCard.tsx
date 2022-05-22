@@ -24,7 +24,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       <div className="flex gap-2  mt-auto ml-auto">
 
         {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }) => {
-          console.log(__typename);
 
           switch (__typename) {
             case 'PlayStoreButtonRecord': return <a style={{ color: dark ? '#fff' : colorTopLeft.hex }} href={url} target='_blank' rel='noreferrer noopener' className="rounded-full sm:opacity-0 text-3xl p-2 dark:bg-gray-800 bg-white relative duration-300 group-hover:opacity-100 scale-95 group-hover:scale-100 hover:!scale-105 active:!scale-95">
