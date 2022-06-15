@@ -38,8 +38,8 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
   return (
     <Layout headerDark={false}>
       <Seo />
-      <main className='max-w-[100vw] overflow-x-clip '>
-        <section className='overflow-clip relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
+      <main className='max-w-[100vw] overflow-x-hidden '>
+        <section className='overflow-hidden relative bg-gradient-to-br text-gray-200 selection:bg-white selection:text-gray-900 before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen bg-black '>
           <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
           <div className='absolute inset-x-0 bottom-0 bg-repeat top-1/2 bg-gradient-to-b from-transparent to-black' />
           <div className='relative flex flex-col w-full max-w-screen-xl px-10 pt-24 text-left layout sm:pt-40 xl:px-0'>
@@ -88,7 +88,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           </div>
 
           <div className='relative flex w-full mt-20 '>
-            <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px] overflow-clip">
+            <motion.div style={{ y: codeY, opacity: codeOpacity }} className="mx-auto max-h-[720px] overflow-hidden">
               <FadeIn className='relative w-full ' startScale={0.9} bounce={0} duration={0.5} delay={0.35}>
                 <CodeWindow
                   className='w-full '
@@ -158,7 +158,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
               <ProjectCard project={p} key={p.title} />
             ))}
             <Link href='/projects'>
-              <a className="relative flex flex-col items-start justify-start w-full h-full p-12 text-gray-200 duration-300 active:scale-95 active:opacity-75 hover:shadow-xl hover:shadow-red-600/20 overflow-clip group hover:-translate-y-2 rounded-2xl hover:text-gray-200">
+              <a className="relative flex flex-col items-start justify-start w-full h-full p-12 text-gray-200 duration-300 active:scale-95 active:opacity-75 hover:shadow-xl hover:shadow-red-600/20 overflow-hidden group hover:-translate-y-2 rounded-2xl hover:text-gray-200">
                 <div className="absolute scale-1 rounded-full w-12 bottom-12 right-12 h-12  scale-0  bg-rose-600 group-hover:scale-[25] opacity-0 duration-300  group-hover:opacity-100"></div>
                 <span className='relative max-w-xs text-3xl font-bold transition-all duration-300 group-hover:text-base group-hover:font-normal group-hover:opacity-75'>See {remaining} more...</span>
                 <span className='relative max-w-xs text-3xl font-bold transition-all duration-300 opacity-0 group-hover:opacity-100'>Browse All <br /> Projects</span>
