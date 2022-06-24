@@ -109,6 +109,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       resume
-    }
+    }, revalidate: 10
   }
 }
