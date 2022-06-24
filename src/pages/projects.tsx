@@ -25,7 +25,7 @@ const Projects: NextPage<props> = ({ projects }) => {
         <div className={`bg-black absolute inset-0 h-screen  before:absolute before:inset-0 before:animate-hue-rotate before:bg-[url(/images/mesh-1.webp)] before:bg-cover before:opacity-100 before:mix-blend-screen
         after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-black after:absolute after:w-full after:h-screen`}></div>
 
-        <section className='overflow-clip pt-40 pb-20 relative bg-gradient-to-br  text-gray-200 selection:bg-white selection:text-gray-900  '>
+        <section className='overflow-hidden pt-40 pb-20 relative bg-gradient-to-br  text-gray-200 selection:bg-white selection:text-gray-900  '>
             <div className='relative flex flex-col w-full max-w-screen-xl px-10 text-left layout  xl:px-0'>
                 <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
                     <h1 className='group flex flex-col leading-[1.1] justify-center items-center mt-24 '>
@@ -46,7 +46,7 @@ const Projects: NextPage<props> = ({ projects }) => {
         <div className="max-w-screen-lg gap-10 mx-auto">
             {projects.map(({ title, description, id, dark, projectLinks, liveSite, icon, image, wip, colorTopLeft, accentColor, techs, subtitle }) => (
                 <FadeIn key={`project_${id}`} bounce={0} duration={0.5} distance={20} once={false} startScale={1} className={`mb-10 ${dark && 'dark'}`}>
-                    <section className='relative h-full max-w-screen-xl gap-12 px-12 pt-10 mx-auto transition-all duration-300 overflow-clip md:flex xl:rounded-3xl md:pt-10 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay ' id='projects' style={{ backgroundColor: dark ? '#F9FAFB' : colorTopLeft.hex }}>
+                    <section className='relative h-full max-w-screen-xl gap-12 px-12 pt-10 mx-auto transition-all duration-300 overflow-hidden md:flex xl:rounded-3xl md:pt-10 before:absolute before:inset-0 before:hue-rotate-0 before:bg-cover before:opacity-100 before:mix-blend-overlay ' id='projects' style={{ backgroundColor: dark ? '#F9FAFB' : colorTopLeft.hex }}>
                         <div className='relative flex-1 max-w-screen-lg mb-12 layout'>
                             {wip && <div className="px-2 mb-2 text-black bg-white dark:bg-black dark:text-white rounded-md w-fit">
                                 WORK IN PROGRESS

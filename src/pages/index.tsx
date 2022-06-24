@@ -255,26 +255,28 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
                   className=' w-full h-[320px]'
                 >
 
-                  {testimonials.map(({ initials, name, review, thumb, title }) => (<SwiperSlide
-                    className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab transition duration-300 w-full flex flex-col  font-semibold text-gray-200`}
+                  {testimonials.map(({ initials, name, review, thumb, title }, i) => (<SwiperSlide
+
+                    key={i}
                   >
-                    <p className='text-xl leading-snug sm:text-3xl'>
-                      {review}
-                    </p>
-                    <div className="flex items-center mt-auto">
-                      {thumb ? <Image width={48} height={48} src={thumb.url} placeholder='blur' blurDataURL={thumb.blurUpThumb} className='mr-4 rounded-full ' objectFit={'cover'} alt={name} />
-                        :
-                        <div className='grid w-12 h-12 mr-4 text-xl font-black text-gray-500 bg-gray-200 rounded-full place-items-center' children={initials} />
-                      }
-                      <div className="ml-8">
-                        <div className="flex flex-col text-lg">
-                          {name}
-                        </div>
-                        <div className="text-sm">
-                          {title}
+                    <div className={`px-8 sm:px-16 lg:px-32 h-full cursor-grab transition duration-300 w-full flex flex-col  font-semibold text-gray-200`}>
+                      <p className='text-xl leading-snug sm:text-3xl'>
+                        {review}
+                      </p>
+                      <div className="flex items-center mt-auto">
+                        {thumb ? <Image width={48} height={48} src={thumb.url} placeholder='blur' blurDataURL={thumb.blurUpThumb} className='mr-4 rounded-full ' objectFit={'cover'} alt={name} />
+                          :
+                          <div className='grid w-12 h-12 mr-4 text-xl font-black text-gray-500 bg-gray-200 rounded-full place-items-center' children={initials} />
+                        }
+                        <div className="ml-8">
+                          <div className="flex flex-col text-lg">
+                            {name}
+                          </div>
+                          <div className="text-sm">
+                            {title}
+                          </div>
                         </div>
                       </div>
-
                     </div>
                   </SwiperSlide>))}
 

@@ -108,6 +108,11 @@ export async function getAllProjects(): Promise<Project[]> {
           url
           comingSoon
         }
+
+        ... on YoutubeButtonRecord{
+          id
+          url
+        }
       }
     }
   }
@@ -178,6 +183,11 @@ export async function getHomeProjects(): Promise<Project[]> {
         id
         url
         comingSoon
+      }
+
+      ... on YoutubeButtonRecord{
+        id
+        url
       }
     }
   }

@@ -8,7 +8,7 @@ export const Footer = () => (
     <footer id="footer" className="w-screen overflow-x-clip pb-12 bg-black print:hidden">
         <div className="max-w-screen-2xl  pt-16 sm:pt-0 pb-12 mx-auto xl:px-8">
             <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
-                <div className="max-w-screen-xl mx-auto text-white py-20 xl:rounded-3xl overflow-clip before:rounded-3xl text-center  bg-gradient-to-br from-rose-600 to-purple-800 before:bg-[url(/images/mesh-1.webp)] before:absolute before:inset-0 before:bg-cover before:mix-blend-overlay before:opacity-100  relative before:animate-hue-rotate">
+                <div className="max-w-screen-xl mx-auto text-white py-20 xl:rounded-3xl overflow-hidden before:rounded-3xl text-center  bg-gradient-to-br from-rose-600 to-purple-800 before:bg-[url(/images/mesh-1.webp)] before:absolute before:inset-0 before:bg-cover before:mix-blend-overlay before:opacity-100  relative before:animate-hue-rotate">
                     <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
 
                     <p className="text-4xl font-extrabold sm:text-6xl relative">

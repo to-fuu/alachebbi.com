@@ -16,13 +16,9 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <link
-            rel='preload'
-            href='/fonts/inter-var-latin.woff2'
-            as='font'
-            type='font/woff2'
-            crossOrigin='anonymous'
-          />
+
+          <meta name="theme-color" content="#000" />
+
 
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link

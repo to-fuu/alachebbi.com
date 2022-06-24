@@ -32,7 +32,7 @@ export const ProjectWindow = React.forwardRef(
     return (
       <div
         onClick={onClick}
-        className={`layout z-[1] select-none overflow-clip rounded-2xl border-t border-t-white/40 bg-white/50 shadow backdrop-blur-md transition-all duration-300 ${className}`}
+        className={`layout z-[1] select-none overflow-hidden rounded-2xl border-t border-t-white/40 bg-white/50 shadow backdrop-blur-md transition-all duration-300 ${className}`}
       >
         <div className='flex h-10 items-center  pr-4'>
           <div className='flex h-10  items-center justify-center gap-2 px-4 font-medium text-gray-700'>

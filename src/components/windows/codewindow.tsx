@@ -84,7 +84,7 @@ const exampleCode = `
 export const CodeWindow: React.FC<HeaderWindowPops> = ({ className }) => {
   return (
     <div
-      className={`layout z-[1] max-h-[500px] md:max-h-[720px] sm:aspect-video select-none overflow-clip shadow-xl sm:rounded-2xl border-t border-t-white/10 bg-black/80  backdrop-blur-md transition-all duration-300 ${className} relative`}
+      className={`layout z-[1] max-h-[500px] md:max-h-[720px] sm:aspect-video select-none overflow-hidden shadow-xl sm:rounded-2xl border-t border-t-white/10 bg-black/80  backdrop-blur-md transition-all duration-300 ${className} relative`}
     >
       <div className='relative flex items-center h-10 px-4'>
         <div className='w-3 h-3 mr-2 bg-white/20 rounded-full  '></div>

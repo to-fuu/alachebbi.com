@@ -32,7 +32,7 @@ const Details = ({
 
   const contentRef = useRef<HTMLDivElement>(null);
   return (
-    <div className='w-full overflow-clip rounded-2xl bg-gray-100 dark:bg-black dark:text-white'>
+    <div className='w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-black dark:text-white'>
       <button
         onClick={() => {
           setOpen(!open);
@@ -50,7 +50,7 @@ const Details = ({
 
       <div
         ref={contentRef}
-        className={`overflow-clip transition-all duration-300`}
+        className={`overflow-hidden transition-all duration-300`}
         style={{
           maxHeight: open ? contentRef.current?.scrollHeight : 0,
         }}
