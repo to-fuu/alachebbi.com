@@ -62,14 +62,14 @@ const Projects: NextPage<props> = ({ projects }) => {
                             <div className='flex flex-wrap items-center justify-center gap-4 mt-12'>
 
 
-                                {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }) => {
+                                {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }, i) => {
 
                                     switch (__typename) {
-                                        case 'PlayStoreButtonRecord': return <PlayStoreButton url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'AppStoreButtonRecord': return <AppStoreButton url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'GithubButtonRecord': return <GithubButton url={url} comingSoon={comingSoon} private={isPrivate} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'VisitButtonRecord': return <LiveSiteButton url={url} comingSoon={comingSoon} icon={icon?.url} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'YoutubeButtonRecord': return <YoutubeButton url={url} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'PlayStoreButtonRecord': return <PlayStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'AppStoreButtonRecord': return <AppStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'GithubButtonRecord': return <GithubButton key={i} url={url} comingSoon={comingSoon} private={isPrivate} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'VisitButtonRecord': return <LiveSiteButton key={i} url={url} comingSoon={comingSoon} icon={icon?.url} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'YoutubeButtonRecord': return <YoutubeButton key={i} url={url} accent={dark ? 'white' : accentColor?.hex} />
                                     }
 
                                     return <></>
