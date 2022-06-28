@@ -1,20 +1,18 @@
 import * as datoCmsApi from '@/cms/dato';
 import Project from "@/cms/types/Project";
+import { AppStoreButton } from '@/components/buttons/AppStoreButton';
+import { GithubButton } from '@/components/buttons/GithubButton';
+import { LiveSiteButton } from '@/components/buttons/LiveSiteButton';
+import { PlayStoreButton } from '@/components/buttons/PlayStoreButton';
+import { YoutubeButton } from '@/components/buttons/YoutubeButton';
 import FadeIn from "@/components/Fadein";
 import Layout from "@/components/layout/Layout";
 import Seo from "@/components/Seo";
 import Tooltip from '@/components/tooltip';
 import { GetStaticProps, NextPage } from "next";
-import { HiChevronDoubleRight } from "react-icons/hi";
-import { ImGithub } from "react-icons/im";
-import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiJava, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiUnity, SiWindows, SiWordpress } from "react-icons/si";
-import { FaElementor } from 'react-icons/fa';
-import { PlayStoreButton } from '@/components/buttons/PlayStoreButton';
-import { AppStoreButton } from '@/components/buttons/AppStoreButton';
-import { GithubButton } from '@/components/buttons/GithubButton';
-import { LiveSiteButton } from '@/components/buttons/LiveSiteButton';
-import { YoutubeButton } from '@/components/buttons/YoutubeButton';
 import Image from 'next/image';
+import { FaElementor } from 'react-icons/fa';
+import { SiAndroidstudio, SiCsharp, SiDatocms, SiDotnet, SiFlutter, SiGraphql, SiJava, SiMysql, SiNextdotjs, SiNodedotjs, SiPaypal, SiReact, SiTailwindcss, SiTypescript, SiUnity, SiWindows, SiWordpress } from "react-icons/si";
 interface props {
     projects: Project[]
 }
@@ -65,11 +63,11 @@ const Projects: NextPage<props> = ({ projects }) => {
                                 {projectLinks.map(({ __typename, url, comingSoon, private: isPrivate }, i) => {
 
                                     switch (__typename) {
-                                        case 'PlayStoreButtonRecord': return <PlayStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'AppStoreButtonRecord': return <AppStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'GithubButtonRecord': return <GithubButton key={i} url={url} comingSoon={comingSoon} private={isPrivate} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'VisitButtonRecord': return <LiveSiteButton key={i} url={url} comingSoon={comingSoon} icon={icon?.url} accent={dark ? 'white' : accentColor?.hex} />
-                                        case 'YoutubeButtonRecord': return <YoutubeButton key={i} url={url} accent={dark ? 'white' : accentColor?.hex} />
+                                        case 'PlayStoreButtonRecord': return <PlayStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : 'black'} />
+                                        case 'AppStoreButtonRecord': return <AppStoreButton key={i} url={url} comingSoon={comingSoon} accent={dark ? 'white' : 'black'} />
+                                        case 'GithubButtonRecord': return <GithubButton key={i} url={url} comingSoon={comingSoon} private={isPrivate} accent={dark ? 'white' : 'black'} />
+                                        case 'VisitButtonRecord': return <LiveSiteButton key={i} url={url} comingSoon={comingSoon} icon={icon.url} accent={dark ? 'white' : 'black'} />
+                                        case 'YoutubeButtonRecord': return <YoutubeButton key={i} url={url} accent={dark ? 'white' : 'black'} />
                                     }
 
                                     return <></>
@@ -81,7 +79,7 @@ const Projects: NextPage<props> = ({ projects }) => {
                         </div>
                         <div className='flex-1 h-full max-h-[300px] flex'>
                             <div className="rounded-t-2xl md:absolute shadow-xl object-cover mt-auto overflow-hidden w-full h-full ">
-                                <Image src={image?.url} alt={image?.alt} placeholder={'blur'} blurDataURL={image?.blurUpThumb} width={image?.width} height={image?.height} />
+                                <Image src={image.url} alt={image.alt} placeholder={'blur'} blurDataURL={image.blurUpThumb} width={image.width} height={image.height} />
                             </div>
 
                         </div>
@@ -108,69 +106,69 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 export const mapTechs = (techs: string[]) => {
-    return techs.map((tech) => {
+    return techs.map((tech, i) => {
         switch (tech) {
-            case "next": return <Tooltip content='Next.js'>
+            case "next": return <Tooltip key={i} content='Next.js'>
                 <SiNextdotjs title='Next.js' />
             </Tooltip>
-            case "tailwind": return <Tooltip content="TailwindCSS">
+            case "tailwind": return <Tooltip key={i} content="TailwindCSS">
                 <SiTailwindcss />
             </Tooltip>
-            case "mysql": return <Tooltip content="MySQL">
+            case "mysql": return <Tooltip key={i} content="MySQL">
                 <SiMysql className='text-4xl' />
             </Tooltip>
-            case "paypal": return <Tooltip content="Paypal">
+            case "paypal": return <Tooltip key={i} content="Paypal">
                 <SiPaypal />
             </Tooltip>
-            case "dato": return <Tooltip content="Dato CMS">
+            case "dato": return <Tooltip key={i} content="Dato CMS">
                 <SiDatocms />
             </Tooltip>
-            case "node": return <Tooltip content="Node.js">
+            case "node": return <Tooltip key={i} content="Node.js">
                 <SiNodedotjs />
             </Tooltip>
-            case "graphql": return <Tooltip content="GraphQL">
+            case "graphql": return <Tooltip key={i} content="GraphQL">
                 <SiGraphql />
             </Tooltip>
-            case "wordpress": return <Tooltip content="Wordpress">
+            case "wordpress": return <Tooltip key={i} content="Wordpress">
                 <SiWordpress />
             </Tooltip>
-            case "flutter": return <Tooltip content="Flutter">
+            case "flutter": return <Tooltip key={i} content="Flutter">
                 <SiFlutter />
             </Tooltip>
-            case "winui": return <Tooltip content="WinUI">
+            case "winui": return <Tooltip key={i} content="WinUI">
                 <SiWindows />
             </Tooltip>
-            case "uwp": return <Tooltip content="Universal Windows Platform">
+            case "uwp": return <Tooltip key={i} content="Universal Windows Platform">
                 <SiWindows />
             </Tooltip>
-            case "winforms": return <Tooltip content="Windows Forms">
+            case "winforms": return <Tooltip key={i} content="Windows Forms">
                 <SiWindows />
             </Tooltip>
-            case "android studio": return <Tooltip content="Android Studio">
+            case "android studio": return <Tooltip key={i} content="Android Studio">
                 <SiAndroidstudio />
             </Tooltip>
-            case "react native": return <Tooltip content="React Native">
+            case "react native": return <Tooltip key={i} content="React Native">
                 <SiReact />
             </Tooltip>
-            case "react": return <Tooltip content="React">
+            case "react": return <Tooltip key={i} content="React">
                 <SiReact />
             </Tooltip>
-            case "typescript": return <Tooltip content="Typescript">
+            case "typescript": return <Tooltip key={i} content="Typescript">
                 <SiTypescript />
             </Tooltip>
-            case ".net": return <Tooltip content=".NET">
+            case ".net": return <Tooltip key={i} content=".NET">
                 <SiDotnet />
             </Tooltip>
-            case "c#": return <Tooltip content="C#">
+            case "c#": return <Tooltip key={i} content="C#">
                 <SiCsharp />
             </Tooltip>
-            case "unity": return <Tooltip content="Unity3D">
+            case "unity": return <Tooltip key={i} content="Unity3D">
                 <SiUnity />
             </Tooltip>
-            case "elementor": return <Tooltip content="Elementor">
+            case "elementor": return <Tooltip key={i} content="Elementor">
                 <FaElementor />
             </Tooltip>
-            case "java": return <Tooltip content="Java">
+            case "java": return <Tooltip key={i} content="Java">
                 <SiJava />
             </Tooltip>
         }

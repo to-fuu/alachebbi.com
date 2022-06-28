@@ -14,6 +14,7 @@ type IProps = {
   startScale?: number;
   opacity?: number;
   style?: React.CSSProperties;
+  skew?: number
 };
 
 const FadeIn = ({
@@ -28,6 +29,7 @@ const FadeIn = ({
   distance = 20,
   opacity = 0,
   style,
+  skew = 0
 }: IProps): JSX.Element => {
   return (
     <div className={className} style={style}>
@@ -37,8 +39,9 @@ const FadeIn = ({
             <motion.div
               className='h-full will-change-[transform,opacity]'
               transition={{ duration, type, bounce, delay: delay }}
-              initial={{ y: distance, scale: startScale, opacity: opacity }}
+              initial={{ y: distance, scale: startScale, opacity: opacity, skewX: skew }}
               animate={{
+                skewX: inView ? 0 : skew,
                 y: inView ? 0 : distance,
                 opacity: inView ? 1 : opacity,
                 scale: inView ? 1 : startScale,

@@ -59,12 +59,12 @@ export default function ResumePage({ resume }: { resume: Resume }) {
               <h3 className="font-semibold mb-8 print:mb-2 text-3xl print:text-xl"># Experience</h3>
 
               {resume.experiences.map(({ title, content, subtitle, year }, i) => (
-                <div className="mb-6 print:mb-3  prose-a:underline prose-rose">
+                <div className="mb-6 print:mb-3  prose-a:underline prose-rose" key={i}>
                   <h4>{title}</h4>
                   <h5 className="opacity-75 mb-2">{subtitle} {year && <span className="opacity-75"><span className="mx-2">|</span> {year} </span>} </h5>
                   <div className="max-w-2xl print:max-w-max">
                     {content.map((c, ci) => (
-                      <Markdown>{c.content}</Markdown>
+                      <Markdown key={ci}>{c.content}</Markdown>
                     ))}
                   </div>
                 </div>
@@ -75,12 +75,12 @@ export default function ResumePage({ resume }: { resume: Resume }) {
             <div className="w-full grid grid-cols-2 lg:block print:block">
               <h3 className="font-semibold mb-8 print:mb-2 text-3xl print:text-xl col-span-2"># Education</h3>
               {resume.educations.map(({ title, hideHeader, content, subtitle, twoColumn }, i) => (
-                <div>
+                <div key={i}>
                   {!hideHeader && <h4 className="mb-2 print:mb-0">{title}</h4>}
                   {subtitle && <h5 className="mb-2 print:mb-1 opacity-75">{subtitle}</h5>}
                   <div className={clsxm('mb-4 print:mb-3 text-gray-300 print:text-gray-600', twoColumn && 'lg:columns-2 print:columns-2')}>
                     {content.map(({ content, extra }, i) => (
-                      <p>{content}  {extra && <span><span className="mx-2 opacity-75">|</span> <span className="opacity-75"> {extra}</span></span>} </p>
+                      <p key={i}>{content}  {extra && <span><span className="mx-2 opacity-75">|</span> <span className="opacity-75"> {extra}</span></span>} </p>
                     ))}
                   </div>
                 </div>

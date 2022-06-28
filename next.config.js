@@ -7,7 +7,7 @@ module.exports = {
   images: {
     domains: ['www.datocms-assets.com']
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 
   // Uncoment to add domain whitelist
   // images: {

@@ -43,7 +43,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           <div className='absolute inset-0 bg-[url(/images/noise.webp)] bg-repeat' />
           <div className='absolute inset-x-0 bottom-0 bg-repeat top-1/2 bg-gradient-to-b from-transparent to-black' />
           <div className='relative flex flex-col w-full max-w-screen-xl px-10 pt-24 text-left layout sm:pt-40 xl:px-0'>
-            <FadeIn className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
+            <FadeIn skew={-12} className='w-full' startScale={1} bounce={0.1} type={'spring'} duration={0.75}>
               <h1 className='group mt-4 flex flex-col leading-[1.1] justify-center items-center '>
                 <div className='mb-4 text-3xl font-bold text-center transition duration-300 scale-90 text-opacity-60'>
                   <img src="/images/me.jpg" className='inline w-12 h-12 mr-4 rounded-full' alt="" />
@@ -104,7 +104,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           id='about'
           ref={s1Ref}
         >
-          <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+          <FadeIn skew={-12} bounce={0} duration={0.5} distance={40} once={false}>
             <h2 className='max-w-xl mt-12 text-5xl text-gray-200 '>
               Passionate Frontend and <br /> Game developer
             </h2>
@@ -144,7 +144,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
         </section>
 
         <div className="mt-12 layout">
-          <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+          <FadeIn skew={-12} bounce={0} duration={0.5} distance={40} once={false}>
             <h2 className='max-w-xl text-5xl text-gray-200'>
               Featured Projects
             </h2>
@@ -174,7 +174,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
 
         <section className='pt-16 bg-gray-900/50 sm:pt-32 sm:pb-16'>
           <div className="layout">
-            <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <FadeIn skew={-12} bounce={0} duration={0.5} distance={40} once={false}>
               <h2 className='text-gray-200'>
                 <div className=''>My Career so far</div>
               </h2>
@@ -241,7 +241,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
 
         <section className='relative pt-16 bg-gradient-to-b from-gray-900/50 to-black sm:py-32' id='blog'>
           <div className='layout '>
-            <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
+            <FadeIn skew={-12} bounce={0} duration={0.5} distance={40} once={false}>
               <h2 className='text-center text-gray-200'>
                 <div className=''>My clients said...</div>
               </h2>
