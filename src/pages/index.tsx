@@ -111,7 +111,7 @@ export default function HomePage({ projects, testimonials, remaining }: props) {
           </FadeIn>
           <FadeIn bounce={0} duration={0.5} distance={40} once={false}>
             <p className='max-w-2xl mt-20 mb-4 text-xl text-gray-400'>
-              Welcome to my portfolio! I&apos;m Ala, a passionate programmer, gamer, artist and UI aspiring designer. I currently work as a fullstack web and mobile developer at <a href="https://brandbox.tn" target={'_blank'} rel='noreferrer noopener' className='text-yellow-600 underline cursor-newtab'>Brandbox</a>.
+              Welcome to my portfolio! I&apos;m Ala, a passionate programmer, gamer, artist and UI aspiring designer. I currently work as a Unity developer at <a href="https://questt.com" target={'_blank'} rel='noreferrer noopener' className='text-teal-600 underline cursor-newtab'>Questt</a>.
 
               <br /> My favourite and most used frameworks are <em className='font-medium'>Next.js</em> and <em className='font-medium'>TailwindCSS</em> for frontend development and <em className='font-medium'>Unity3D</em> for game development.
             </p>
