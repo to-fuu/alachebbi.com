@@ -33,7 +33,7 @@ export default function ResumePage({ resume }: { resume: Resume }) {
           <div className="flex gap-2 mt-4 print:mt-2">
             <span>Frontend Engineer</span>
             |
-            <a href="mailto:chebbi.ala@outlook.com" className="underline ">chebbi.ala@outlook.com</a>
+            <a href="mailto:alachebbi.bbx@gmail.com" className="underline ">alachebbi.bbx@gmail.com</a>
             |
             <a href="https://alachebbi.com" className="underline">alachebbi.com</a>
           </div>
