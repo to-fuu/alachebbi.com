@@ -39,13 +39,13 @@ export default function ResumePage({ resume }: { resume: Resume }) {
           </div>
           <div className="flex gap-2 mt-4 print:mt-2 underline ">
             <a href="/git" rel="noreferrer noopener" className="flex items-center">
-               alachebbi.com/git
+            <FaGithub className="mr-1" /> alachebbi.com/git
             </a>
             <a href="/in" rel="noreferrer noopener" className="flex items-center">
-              alachebbi.com/in
+           <ImLinkedin className="mr-1" /> alachebbi.com/in
             </a>
             <a href="/up" rel="noreferrer noopener" className="flex items-center">
-               alachebbi.com/up
+            <SiUpwork className="mr-1" /> alachebbi.com/up
             </a>
           </div>
           <p className="max-w-3xl mt-4 print:mt-2 opacity-75">Passionate frontend and game developer always in search for interesting challenges and skills. <br /> My speciality lies in my fast adaptability to new environments and technologies.</p>
