@@ -8,13 +8,21 @@ module.exports = {
     domains: ['www.datocms-assets.com']
   },
   reactStrictMode: false,
+  async redirects() {
+    return [
+      {
+        source: '/git',
+        destination: 'https://github.com/to-fuu',
+        permanent: true,
+      },
+       {
+        source: '/linkedin',
+        destination: 'https://www.linkedin.com/in/ala-chebbi-32266b168/',
+        permanent: true,
+      },
+    ]
+  },
 
-  // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
 
   // SVGR
   webpack(config) {
