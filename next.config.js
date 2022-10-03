@@ -16,10 +16,16 @@ module.exports = {
         permanent: true,
       },
        {
-        source: '/linkedin',
+        source: '/in',
         destination: 'https://www.linkedin.com/in/ala-chebbi-32266b168/',
         permanent: true,
       },
+      {
+        source: '/up',
+        destination: 'https://www.upwork.com/freelancers/alachebbi',
+        permanent: true,
+      },
+      
     ]
   },
 
