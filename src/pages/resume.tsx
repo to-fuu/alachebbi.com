@@ -38,14 +38,14 @@ export default function ResumePage({ resume }: { resume: Resume }) {
             <a href="https://alachebbi.com" className="underline">alachebbi.com</a>
           </div>
           <div className="flex gap-2 mt-4 print:mt-2 underline ">
-            <a href="https://github.com/to-fuu" rel="noreferrer noopener" className="flex items-center">
-              <FaGithub className="mr-1" />/to-fuu
+            <a href="/git" rel="noreferrer noopener" className="flex items-center">
+               alachebbi.com/git
             </a>
-            <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" rel="noreferrer noopener" className="flex items-center">
-              <ImLinkedin className="mr-1" />/in/ala-chebbi-32266b168
+            <a href="/in" rel="noreferrer noopener" className="flex items-center">
+              alachebbi.com/in
             </a>
-            <a href="https://www.upwork.com/freelancers/alachebbi" rel="noreferrer noopener" className="flex items-center">
-              <SiUpwork className="mr-1" />/freelancers/alachebbi
+            <a href="/up" rel="noreferrer noopener" className="flex items-center">
+               alachebbi.com/up
             </a>
           </div>
           <p className="max-w-3xl mt-4 print:mt-2 opacity-75">Passionate frontend and game developer always in search for interesting challenges and skills. <br /> My speciality lies in my fast adaptability to new environments and technologies.</p>
