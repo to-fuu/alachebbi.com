@@ -42,10 +42,10 @@ export default function ResumePage({ resume }: { resume: Resume }) {
               <FaGithub className="mr-1" />/to-fuu
             </a>
             <a href="https://www.linkedin.com/in/ala-chebbi-32266b168/" rel="noreferrer noopener" className="flex items-center">
-              <ImLinkedin className="mr-1" />/in/ala-chebbi-32266b168/
+              <ImLinkedin className="mr-1" />/in/ala-chebbi-32266b168
             </a>
             <a href="https://www.upwork.com/freelancers/alachebbi" rel="noreferrer noopener" className="flex items-center">
-              <SiUpwork className="mr-1" />/freelancers/ala-chebbi-32266b168/
+              <SiUpwork className="mr-1" />/freelancers/alachebbi
             </a>
           </div>
           <p className="max-w-3xl mt-4 print:mt-2 opacity-75">Passionate frontend and game developer always in search for interesting challenges and skills. <br /> My speciality lies in my fast adaptability to new environments and technologies.</p>
