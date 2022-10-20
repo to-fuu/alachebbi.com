@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/resume", "destination": "https://resume.alachebbi.com" }
+  ]
+}
