@@ -51,8 +51,7 @@ export async function getAllProjects(): Promise<Project[]> {
    {
     allProjects {
       description
-      liveSite
-      repo
+
       title
       year
       subtitle
@@ -61,6 +60,14 @@ export async function getAllProjects(): Promise<Project[]> {
       wip
       id
       icon {
+        url
+      webp: url(imgixParams: {fm: webp, q: 100})
+      blurUpThumb
+      width
+      height
+      alt
+      }
+      wideImage {
         url
       webp: url(imgixParams: {fm: webp, q: 100})
       blurUpThumb
@@ -127,8 +134,6 @@ export async function getHomeProjects(): Promise<Project[]> {
  {
   allProjects(first: "5") {
     description
-    liveSite
-    repo
     title
     year
     techs
@@ -143,6 +148,14 @@ export async function getHomeProjects(): Promise<Project[]> {
       width
       height
       alt
+    }
+    wideImage {
+      url
+    webp: url(imgixParams: {fm: webp, q: 100})
+    blurUpThumb
+    width
+    height
+    alt
     }
     image {
       url
