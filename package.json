@@ -11,6 +11,7 @@
     "@tailwindcss/typography": "^0.5.2",
     "@uiw/react-md-editor": "^3.9.5",
     "clsx": "^1.1.1",
+    "express": "^4.18.2",
     "framer-motion": "^6.2.6",
     "markdown-to-jsx": "^7.1.7",
     "next": "^12.2.0",
