@@ -24,7 +24,8 @@
     "react-markdown": "^8.0.0",
     "react-md-editor": "^0.2.2",
     "swiper": "^8.0.6",
-    "tailwind-merge": "^1.2.0"
+    "tailwind-merge": "^1.2.0",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
